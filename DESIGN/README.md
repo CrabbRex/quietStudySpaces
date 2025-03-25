@@ -27,6 +27,22 @@ This is the third screen for the app that will pop up when a user decided to add
 ### Who are the users of Quiet Study Spots?
 The main target audience for Quiet Study Spaces is students, mainly in university in the age range of 18-26, however there is also a smaller target audience that includes a larger age range for high school students and remote workers. 
 
+##### User Groups:
+1. Univeristy Students - Primary User Group:
+    - 18-26 age range.
+    - Need quiet spaces for focused study session including study, lectures and assignment work.
+    - May need Wi-Fi, Power Outlets and Coffee/Food.
+    - Often moving between places or studying between part-time work.
+2. High School Students - Secondary User Group:
+    - 14-18 age rane.
+    - Need free after-school study spots, like libraries, to complete homework.
+    - More likely to study collaboratively.
+    - Need easy access as high scholl students are unlikely to have their own transport.
+3. Remote Workers - Secondary User Group:
+    - 24+ age range.
+    - Need consistent workplaces with power outlets and Wi-Fi.
+    - Preference for collaborative spaces / loud enviroments as they may have online meetings and need to talk.
+
 ##### Persona:
 
 ##### Why the target audience would choose Quiet Study Spaces over competitors.
@@ -36,3 +52,4 @@ The main competitor to Quiet Study Spaces would be a simple google search. Users
 ### Design - Wireframes and mockups
 
 ### What will be implemented into MVP and what will be left out?
+A Favourites screen will be included but for this MVP, clicking on a favourite will not lead anywhere. It will be just a list. Futher, future functionality should include clicking on a favourite spot and opening it on the map.
