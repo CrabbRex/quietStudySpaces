@@ -107,8 +107,15 @@ The last 2 wireframes are for the other 2 options on the navigation bar along th
 ![Wireframe for account screen](Images/AccountWireframe.png "Accounts Wireframe")
 
 To increase visibility, Quiet Study Spaces keeps the UI simple and uncluttered, which can best be seen in the MockUps below.
+![MockUp for login screen](Images/SignIn_Screen_MockUp.png "SignIn MockUp")
 
-To keep in mind universal Design Priciples, the simple layout of Quiet Study Spaces allows for large buttons with lots of room between.
+To keep in mind universal Design Priciples, the simple layout of Quiet Study Spaces allows for large buttons with lots of room between. This can best be seen with the homescreen and modals below:
+![Gif Of HomeScreen and all Modals](Images/ModalsMockUp.gif "Modals/HomeScreen Gif")
+
+Lastly, the mock-ups for the favourites screen and the account screen:
+![Favourites Screen Mockups](Images/Favourites_MockUp.png "Favourites Mockup")
+![Accounts Screen Mockups](Images/Account_MockUp.png "Account Mockup")
+
 
 ### What will be implemented into MVP and what will be left out?
 A Favourites screen will be included but for this MVP, clicking on a favourite will not lead anywhere. It will be just a list. Futher, future functionality should include clicking on a favourite spot and opening it on the map.
