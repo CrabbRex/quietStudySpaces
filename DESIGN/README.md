@@ -64,12 +64,32 @@ The main target audience for Quiet Study Spaces is students, mainly in universit
     - Preference for collaborative spaces / loud enviroments as they may have online meetings and need to talk.
 
 ##### Persona:
+Name: Cleo
+Gender: She/Her
+Age: 18
+Occupation: Macquarie Univeristy Student and Part Time Service Industry Worker.
+Pain Points:
+- Likes to study in a variety of different spots.
+- Always wants something a drinl sip on when studying.
+- Needs reliable Wi-Fi to access online textbooks.
+- Sometimes needs very quiet workspaces to focus on harder tasks.
+How Cleo Will Use the App:
+- Can use the app to find many different and diversified study spaces all around the City, Macquarie and Bondi Junction. She can also use the associated photos to 'scope out' the space before going there.
+- Can use the app to find cafe's for coffees
+- Can filter study spaces to find locations with free Wi-Fi
+- Can filter searches to find spaces that are good for individual, focused study.
 
 ##### Why the target audience would choose Quiet Study Spaces over competitors.
-The main competitor to Quiet Study Spaces would be a simple google search. Users would choose this app over something like that because it is a specialised app that has more features. A google search would give nearby study spots but it would not give the deapth that this app gives with it's options to filter locations based on preferences.
+The main competitor to Quiet Study Spaces would be a simple google search. Users would choose this app over something like that because it is a specialised app that has more features. A google search would give nearby study spots but it would not give the deapth that this app gives with it's options to filter locations based on preferences.<br>
+Using the 'Cleo' persona, she would use Quiet Study Spaces to have the ability to make more refined searches to meet her needs. The main competitor has very vauge search results that can sometimes be wrong, whereas Quiet Study Spaces will offer filtered locations that match the study space she needs that day.
 
 
 ### Design - Wireframes and mockups
+For the Design of Quiet Study Spaces, the idea is to replicate the feel of a serene study space. This means a very clean, simple and tidy look to replicate that feeling. Similarly, the design needs a bit of life, just like a study space can use some plants. So plants will be incorporate into the design.
+
+This clean design with a pop of colour from the plants its portrayed to the user with this colour palette. It uses simple white and black with a comfortable cream and the green for the plants.
+![Quiet Study Spaces Colour Palette](Colour_Palette.png "Color Palette")
+
 
 ### What will be implemented into MVP and what will be left out?
 A Favourites screen will be included but for this MVP, clicking on a favourite will not lead anywhere. It will be just a list. Futher, future functionality should include clicking on a favourite spot and opening it on the map.
