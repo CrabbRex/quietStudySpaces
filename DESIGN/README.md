@@ -88,8 +88,27 @@ Using the 'Cleo' persona, she would use Quiet Study Spaces to have the ability t
 For the Design of Quiet Study Spaces, the idea is to replicate the feel of a serene study space. This means a very clean, simple and tidy look to replicate that feeling. Similarly, the design needs a bit of life, just like a study space can use some plants. So plants will be incorporate into the design.
 
 This clean design with a pop of colour from the plants its portrayed to the user with this colour palette. It uses simple white and black with a comfortable cream and the green for the plants.
-![Quiet Study Spaces Colour Palette](Colour_Palette.png "Color Palette")
+![Quiet Study Spaces Colour Palette](Images/Colour_Palette.png "Color Palette")
 
+#### WireFrames:
+In order to keep the User Experience as easy as possible, keeping in mind the '3 tap rule', Quiet Study Spaces heavily leans on Modals. As can be seen by the below WireFrames, there is a modal for 'Add Location', a modal for 'Filter Location' and a small modal that will popup when the user clicks on a Study Space on the map. Similarly, for the '3 tap rule', the navigation bar down the bottom is easily visible, but does not have too many options. 
+The most taps possible to get to any point in the app is 3. If a user has a modal open, it would take 1 click to close the modal, 1 click to access the accounts button on the navigation bar and one click to manage account. The limited screens of the app (by using modals), keep the user's flow easy and understandable.
+Here is the wireframe for the simple sign in page:
+![Wireframe for login screen](Images/SignInScreenWireframe.png "SignIn WireFame") <br>
+
+And here is the Home Page and the Modal that will pop up when the use clicks on a location:
+![Gif of HomeScreen and The Modal that Pops up when a location is clicked](Images/HomeScreenModalWireframe.gif "HomeScreen1")
+
+Here are the two modals that will popup from the home page when pressing the buttons 'Add Location' and 'Filter Locations'
+![Gif of HomeScreen and The Modals that Pops up when a button is clicked](Images/BigModalsWireframe.gif "ButtonModals")
+
+The last 2 wireframes are for the other 2 options on the navigation bar along the bottom. The 'Favourites' Screen and the 'Account' Screen.
+![Wireframe for favourites screen](Images/FavouritesWireframe.png "Favourites Wireframe")
+![Wireframe for account screen](Images/AccountWireframe.png "Accounts Wireframe")
+
+To increase visibility, Quiet Study Spaces keeps the UI simple and uncluttered, which can best be seen in the MockUps below.
+
+To keep in mind universal Design Priciples, the simple layout of Quiet Study Spaces allows for large buttons with lots of room between.
 
 ### What will be implemented into MVP and what will be left out?
 A Favourites screen will be included but for this MVP, clicking on a favourite will not lead anywhere. It will be just a list. Futher, future functionality should include clicking on a favourite spot and opening it on the map.
