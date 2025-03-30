@@ -123,4 +123,8 @@ Lastly, the mock-ups for the favourites screen and the account screen:
 
 
 ### What will be implemented into MVP and what will be left out?
+The MVP will implement enough features that the App will work. This includes the signin screen with backend data storage. The Home Screen with Map Implementation and Navigation Bar. All 3 modals (Modal when clicking on a location, Adding a location and Filtering search). The ability to favourite locations and the Account screen.
+
+The main features that will be left out are the ability to take and upload photos. Similarly, photos will not show up in the modal when clicking on a Study Space. 
 A Favourites screen will be included but for this MVP, clicking on a favourite will not lead anywhere. It will be just a list. Futher, future functionality should include clicking on a favourite spot and opening it on the map.
+Some of the account buttons will not have functionality either. Like manage account, change email, account security. The account functionality will be very limited in that users can make and delete accounts with password attached. This is a very important area for future development.
