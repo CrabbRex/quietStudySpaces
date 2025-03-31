@@ -99,6 +99,7 @@ This clean design with a pop of colour from the plants its portrayed to the user
 In order to keep the User Experience as easy as possible, keeping in mind the '3 tap rule', Quiet Study Spaces heavily leans on Modals, keeping the total screen to a minimum. As can be seen by the below WireFrames, there is a modal for 'Add Location', a modal for 'Filter Location' and a small modal that will popup when the user clicks on a Study Space on the map. Similarly, for the '3 tap rule', the navigation bar down the bottom is easily visible, but does not have too many options, so as to not overwhelm the user. 
 The most taps possible to get to any point in the app is 3. For example; If a user has a modal open, it would take 1 click to close the modal, 1 click to access the accounts button on the navigation bar and one click to manage account. The limited screens of the app (by using modals), keep the user's flow easy and understandable.<br>
 Here is the wireframe for the simple sign in page:
+
 ![Wireframe for login screen](Images/SignInScreenWireframe.png "SignIn WireFame") <br>
 
 And here is the Home Page and the Modal that will pop up when the user clicks on a location:
@@ -112,16 +113,16 @@ The last 2 wireframes are for the other 2 options on the navigation bar along th
 ![Wireframe for account screen](Images/AccountWireframe.png "Accounts Wireframe")
 
 
-#### WireFrames:
-To increase visibility, Quiet Study Spaces keeps the UI simple and uncluttered, which can best be seen in the MockUps below, starting with the Sign In Screen:
+#### Mock Ups:
+To increase visibility, Quiet Study Spaces keeps the UI simple and uncluttered, which can best be seen in the MockUps below, starting with the Sign In Screen:  
 ![MockUp for login screen](Images/SignIn_Screen_MockUp.png "SignIn MockUp")
 
 To keep in mind universal Design Priciples, the simple layout of Quiet Study Spaces allows for large buttons with lots of room between. This allows all users to be able to easily user the app.
 
-This can best be seen with the homescreen and modals below: 
+This can best be seen with the homescreen and modals below:  
 ![Gif Of HomeScreen and all Modals](Images/ModalsMockUp.gif "Modals/HomeScreen Gif")
 
-Lastly, the mock-ups for the favourites screen and the account screen, following the colour scheme:
+Lastly, the mock-ups for the favourites screen and the account screen, following the colour scheme:  
 ![Favourites Screen Mockups](Images/Favourites_MockUp.png "Favourites Mockup")
 ![Accounts Screen Mockups](Images/Account_MockUp.png "Account Mockup")
 
