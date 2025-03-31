@@ -18,7 +18,7 @@ The 1/3 - 1/4 of the home page will have some button options. These options incl
 
 #### Data Storage:
 This app will store a few different types of data. First is the User Login Data. Second is the Location Tags and third is the associated filter data attached to the location, with photo's specific to locations.. Also, the user's personal favourite study spaces will be stored.</br>
-This data will be stored in a remote database throught the use of either MongoDB or Firebase.
+This data will be stored in a remote database through the use of either MongoDB or Firebase.
 
 #### Add Location:
 On the home page, there is a button called 'Add Location'. When pressed a modal will appear for the user to input some filter information (in the form of Check Boxes) of the study location they are submitting. This will use the users current location. There will be a big button to submit the location, aswell as 2 industry standard buttons for easy use to cancel or leave the modal.
@@ -134,6 +134,7 @@ For Quiet Study Spaces, the Minimal Viable Product will implement just enough fe
 - Adding Study Locations: Users can add new locations using their current GPS location, submit basic names and check off the filters. This data will be stored in a database.
 - Basic Filtering: Allows filtering of locations by two filters instead of the many listed.
 - Favourites System: Users can favourite a study spot. A seperate screen will show the favourited spots.
+- Navigation Bar: Along the bottom of all screens (excluding modals) is a simple navigation bar for easy navigation of the app.
 
 What will be left out of the MVP: (For Future Development)
 - Photo Uploading: Users will not be able to take and upload photos of their study spots.
@@ -141,3 +142,4 @@ What will be left out of the MVP: (For Future Development)
 - Favourite Spots Count: The location will not show how many users have favourited a spot.
 - Favourite Screen Functionality: When clicking on a favourited space in the favourites screen, nothing will happen. It is just a list.
 - Full Account Management: No email/username change and no 2FA in the MVP.
+- Newly added study location will not be visible to other users on the MVP.
