@@ -72,7 +72,8 @@ Pain Points:
 - Needs to find good study spaces quickly, so she can get study done before class or before work starts.
 - Always wants a drink to sip on when studying.
 - Needs reliable Wi-Fi to access online textbooks.
-- Sometimes needs very quiet workspaces to focus on harder tasks.  
+- Sometimes needs very quiet workspaces to focus on harder tasks.  <br>
+   
 How Cleo Will Use the App:  
 - Can use the app to find many different and diversified study spaces all around the City, Macquarie and Bondi Junction. She can also use the associated photos to 'scope out' the space before going there.
 - Can use Quiet Study Spaces to quickly find the right Study Space. Can also use the favourites feature to remember the most functional study spaces for when she has little time between work and university.
