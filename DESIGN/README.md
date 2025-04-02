@@ -130,12 +130,13 @@ Lastly, the mock-ups for the favourites screen and the account screen, following
 ## What will be implemented into MVP and what will be left out?
 For Quiet Study Spaces, the Minimal Viable Product will implement just enough features and functionality to work. This will include:
 - **User Authenticaion:** Signup and login.
-- **Map with Study Locations:** Display users current location, show some hard coded markers for study locations. Clicking a marker opens the location's modal.
+- **Map with Study Locations:** The inbuilt map will be a basic implementation with some features, missing. It will display users current location and show some hard coded markers for study locations. Clicking a marker opens the location's modal.  
 - **Adding Study Locations:** Users can add new locations using their current GPS location, submit basic names and check off the filters. Available through a button on the home page. However, new study locations will be local to the user and not visible to others in the MVP. Future versions shoud allow dynamic updates.
 - **Basic Filtering:** Allows filtering of locations by two filters instead of the many listed. Available through a button on the home page.
-- **Favourites System:** Users can favourite a study spot. A seperate screen will show the favourited spots.
 - **Navigation Bar:** Along the bottom of all screens (excluding modals) is a simple navigation bar for easy navigation of the app.  
-This MVP is desgigned to focus on a localised version with limited map functioanlity and limited data sharing. Future updates will include dynamic data sharing and more advanced features.  
+This MVP is desgigned to focus on a localised version with limited map functioanlity and limited data sharing. Future updates will include dynamic data sharing and more advanced features.
+- **Favourites System:** Users can favourite a study spot. A seperate screen will show the favourited spots.
+- **Accounts Screen:** Very basic implementation with limited options available for account management.  
   
 What will be left out of the MVP: (For Future Development)
 - **Photo Uploading:** Users will not be able to take and upload photos of their study spots.
