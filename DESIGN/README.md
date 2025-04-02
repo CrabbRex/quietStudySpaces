@@ -102,7 +102,7 @@ Here is the wireframe for the simple sign in page:
 
 ![Wireframe for login screen](Images/SignInScreenWireframe.png "SignIn WireFame") <br>
 
-And here is the Home Page and the Modal that will pop up when the user clicks on a location:
+And here is the Home Page and the Modal that will pop up when the user clicks on a location tag on the map:
 ![Gif of HomeScreen and The Modal that Pops up when a location is clicked](Images/HomeScreenModalWireframe.gif "HomeScreen1")
 
 Here are the two modals that will popup from the home page when pressing the Home Screen's buttons 'Add Location' and 'Filter Locations':
@@ -129,17 +129,18 @@ Lastly, the mock-ups for the favourites screen and the account screen, following
 
 ## What will be implemented into MVP and what will be left out?
 For Quiet Study Spaces, the Minimal Viable Product will implement just enough features and functionality to work. This will include:
-- User Authenticaion: Signup and login with Firebase Authentication.
-- Map with Study Locations: Display users currently location, show markers for study locations, clicking a marker opens the location's modal.
-- Adding Study Locations: Users can add new locations using their current GPS location, submit basic names and check off the filters. This data will be stored in a database.
-- Basic Filtering: Allows filtering of locations by two filters instead of the many listed.
-- Favourites System: Users can favourite a study spot. A seperate screen will show the favourited spots.
-- Navigation Bar: Along the bottom of all screens (excluding modals) is a simple navigation bar for easy navigation of the app.
-
+- **User Authenticaion:** Signup and login.
+- **Map with Study Locations:** Display users current location, show some hard coded markers for study locations. Clicking a marker opens the location's modal.
+- **Adding Study Locations:** Users can add new locations using their current GPS location, submit basic names and check off the filters. Available through a button on the home page. However, new study locations will be local to the user and not visible to others in the MVP. Future versions shoud allow dynamic updates.
+- **Basic Filtering:** Allows filtering of locations by two filters instead of the many listed. Available through a button on the home page.
+- **Favourites System:** Users can favourite a study spot. A seperate screen will show the favourited spots.
+- **Navigation Bar:** Along the bottom of all screens (excluding modals) is a simple navigation bar for easy navigation of the app.  
+This MVP is desgigned to focus on a localised version with limited map functioanlity and limited data sharing. Future updates will include dynamic data sharing and more advanced features.  
+  
 What will be left out of the MVP: (For Future Development)
-- Photo Uploading: Users will not be able to take and upload photos of their study spots.
-- The MVP will only include a few filtering options.
-- Favourite Spots Count: The location will not show how many users have favourited a spot.
-- Favourite Screen Functionality: When clicking on a favourited space in the favourites screen, nothing will happen. It is just a list.
-- Full Account Management: No email/username change and no 2FA in the MVP.
-- Newly added study location will not be visible to other users on the MVP.
+- **Photo Uploading:** Users will not be able to take and upload photos of their study spots.
+- **Filtering:** The MVP will only include a few filtering options.
+- **Favourite Spots Count:** Locations modal's will not show how many users have favourited a spot.
+- **Favourite Screen Functionality:** When users click on a favourited space in the favourites screen, no additional action will be attached. It will simply be a list of their favourited spaces.
+- **Full Account Management:** More complex account management features like email/username change and two-factor authentication will be excluded.
+- **Dynamic Date Sharing:** Newly added study location will not be visible to other users on the MVP.
