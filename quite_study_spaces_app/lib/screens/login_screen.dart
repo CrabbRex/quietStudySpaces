@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quite_study_spaces_app/screens/login_screen.dart';
 import 'package:quite_study_spaces_app/states/locationState.dart';
+import 'package:quite_study_spaces_app/screens/home_screen.dart';
+import 'package:quite_study_spaces_app/states/screen_state.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -20,7 +22,7 @@ class _LoginScreen extends State<LoginScreen> {
         title: Text("Quiet Study Spaces"),
         actions: [],
       ),
-      body: Consumer<Locationstate>(builder: (context, locationState, child) {
+      body: Consumer<ScreenState>(builder: (context, state, child) {
         return Center(
             child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -42,7 +44,7 @@ class _LoginScreen extends State<LoginScreen> {
             ),
             SizedBox(height: 40),
             ElevatedButton(
-              onPressed: Placeholder.new,
+              onPressed: state.logIn,
               child: Text('Log In'),
             ),
           ],
