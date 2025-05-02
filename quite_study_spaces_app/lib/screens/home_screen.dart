@@ -23,8 +23,28 @@ class _HomeScreen extends State<HomeScreen> {
         actions: [],
       ),
       body: Consumer<ScreenState>(builder: (context, state, child) {
-        return Center(
-            child: Text("Home Screen"));
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Expanded(child: Center(child: Text("Home Screen"))),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 40.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ElevatedButton(
+                    onPressed: Placeholder.new,
+                    child: Text("Add Location"),
+                  ),
+                  SizedBox(height: 16),
+                  ElevatedButton(
+                    onPressed: Placeholder.new, 
+                    child: Text("Filter"))
+                ],
+              )
+            ),
+          ],
+        );
       }),
     );
   }
