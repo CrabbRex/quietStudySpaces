@@ -32,11 +32,31 @@ class _HomeScreen extends State<HomeScreen> {
         title: Text("Quiet Study Spaces"),
         actions: [],
       ),
-      body: Consumer<ScreenState>(builder: (context, state, child) {
+      body: Consumer2<ScreenState, Locationstate>(builder: (context, state, locaState, child) {
+        final locations = locaState.getLocations();
         return Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Expanded(child: Center(child: Text("Home Screen"))),
+            Expanded(
+              child: locations.isEmpty
+              ? Center(child: Text("No Locations Yet"))
+              : ListView.builder(
+                padding: EdgeInsets.all(16),
+                itemCount: locations.length,
+                itemBuilder: (context, index){
+                  final location = locations[index];
+                  return Card(
+                    elevation: 3,
+                    
+                    child: ListTile(
+                      title: Text(location.name)
+
+                    )
+                  );
+                }
+              )
+              
+            ),
             Padding(
               padding: const EdgeInsets.only(bottom: 40.0),
               child: Column(

@@ -6,8 +6,11 @@ import 'package:quite_study_spaces_app/states/locationState.dart';
 import 'package:quite_study_spaces_app/states/screen_state.dart';
 void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => ScreenState(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => ScreenState()),
+        ChangeNotifierProvider(create: (context) => Locationstate()),
+      ],
       child: MaterialApp(
         home: const CurrentScreen(),
       )
