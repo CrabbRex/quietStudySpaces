@@ -1,0 +1,55 @@
+import 'package:flutter/material.dart';
+
+class NewLocation extends StatefulWidget {
+  const NewLocation({super.key});
+
+  @override
+  State<NewLocation> createState() => _NewLocationState();
+}
+
+class _NewLocationState extends State<NewLocation> {
+  bool isFirstChecked = false;
+  bool isSecondChecked = false;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        height: 500,
+        padding: EdgeInsets.all(20),
+        child: Column(
+          children: [
+            Expanded(
+              child: Column(
+                children: [
+                  TextField(
+                    maxLength: 40,
+                    decoration: InputDecoration(label: Text('Location Title')),
+                  ),
+                  CheckboxListTile(
+                    value: isFirstChecked,
+                    onChanged: (bool? value) {
+                      setState(() {
+                        isFirstChecked = value!;
+                      });
+                    },
+                    title: const Text("Cafe"),
+                  ),
+                  CheckboxListTile(
+                    value: isSecondChecked,
+                    onChanged: (bool? value) {
+                      setState(() {
+                        isSecondChecked = value!;
+                      });
+                    },
+                    title: const Text("View"),
+                  ),
+                ],
+              ),
+            ),
+            ElevatedButton(
+              onPressed: Placeholder.new,
+              child: Text("Add Location"),
+            ),
+          ],
+        ));
+  }
+}
