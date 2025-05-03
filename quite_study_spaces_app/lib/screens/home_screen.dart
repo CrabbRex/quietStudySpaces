@@ -46,11 +46,15 @@ class _HomeScreen extends State<HomeScreen> {
                 itemBuilder: (context, index){
                   final location = locations[index];
                   return Card(
+                    clipBehavior: Clip.hardEdge,
                     elevation: 3,
                     
                     child: ListTile(
-                      title: Text(location.name)
-
+                      title: Text(location.name),
+                      subtitle: Text(location.description),
+                      onTap:() {
+                        debugPrint('Card Tapped.');
+                      }
                     )
                   );
                 }
