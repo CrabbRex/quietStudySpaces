@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:quite_study_spaces_app/screens/modals/add_location.dart';
 import 'package:quite_study_spaces_app/states/locationState.dart';
 import 'package:quite_study_spaces_app/states/screen_state.dart';
+import 'package:quite_study_spaces_app/screens/modals/show_location.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -19,6 +20,13 @@ class _HomeScreen extends State<HomeScreen> {
       isScrollControlled: true,
       context: context, 
       builder: (modalContext) => NewLocation()
+    );
+  }
+
+  void _openIndividualLocationModal() {
+    showDialog(
+      context: context, 
+      builder: (modalContext) => ShowLocation()
     );
   }
 
@@ -50,7 +58,7 @@ class _HomeScreen extends State<HomeScreen> {
                       title: Text(location.name),
                       subtitle: Text(location.description),
                       onTap:() {
-                        debugPrint('Card Tapped.');
+                        _openIndividualLocationModal();
                       }
                     )
                   );
