@@ -24,6 +24,16 @@ class _NewLocationState extends State<NewLocation> {
                     maxLength: 40,
                     decoration: InputDecoration(label: Text('Location Title')),
                   ),
+                  TextFormField(
+                    keyboardType: TextInputType.multiline,
+                    maxLines: 5,
+                    decoration: InputDecoration(
+                      labelText: 'Details',
+                      alignLabelWithHint: true,
+                      border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                      ),
+                    ),
+                  ),
                   CheckboxListTile(
                     value: isFirstChecked,
                     onChanged: (bool? value) {
@@ -42,6 +52,7 @@ class _NewLocationState extends State<NewLocation> {
                     },
                     title: const Text("View"),
                   ),
+                  ElevatedButton(onPressed: Placeholder.new, child: Text("Add Photos")),
                 ],
               ),
             ),
