@@ -15,4 +15,9 @@ class ScreenState extends ChangeNotifier {
     _status = "homeScreen";
     notifyListeners();
   }
+
+  void signUp() {
+    _status = "signup";
+    notifyListeners();
+  }
 }

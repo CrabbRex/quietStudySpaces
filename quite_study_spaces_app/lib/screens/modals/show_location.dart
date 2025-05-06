@@ -1,66 +1,22 @@
 import 'package:flutter/material.dart';
 
-class NewLocation extends StatefulWidget {
-  const NewLocation({super.key});
+class ShowLocation extends StatefulWidget {
+  const ShowLocation({super.key});
 
   @override
-  State<NewLocation> createState() => _NewLocationState();
+  State<ShowLocation> createState() => _ShowLocationState();
 }
 
-class _NewLocationState extends State<NewLocation> {
+class _ShowLocationState extends State<ShowLocation> {
   bool isFirstChecked = false;
   bool isSecondChecked = false;
   @override
   Widget build(BuildContext context) {
-    return Container(
-        height: 500,
-        padding: EdgeInsets.all(20),
-        child: Column(
-          children: [
-            Expanded(
-              child: Column(
-                children: [
-                  TextField(
-                    maxLength: 40,
-                    decoration: InputDecoration(label: Text('Location Title')),
-                  ),
-                  TextFormField(
-                    keyboardType: TextInputType.multiline,
-                    maxLines: 5,
-                    decoration: InputDecoration(
-                      labelText: 'Details',
-                      alignLabelWithHint: true,
-                      border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                      ),
-                    ),
-                  ),
-                  CheckboxListTile(
-                    value: isFirstChecked,
-                    onChanged: (bool? value) {
-                      setState(() {
-                        isFirstChecked = value!;
-                      });
-                    },
-                    title: const Text("Cafe"),
-                  ),
-                  CheckboxListTile(
-                    value: isSecondChecked,
-                    onChanged: (bool? value) {
-                      setState(() {
-                        isSecondChecked = value!;
-                      });
-                    },
-                    title: const Text("View"),
-                  ),
-                  ElevatedButton(onPressed: Placeholder.new, child: Text("Add Photos")),
-                ],
-              ),
-            ),
-            ElevatedButton(
-              onPressed: Placeholder.new,
-              child: Text("Add Location"),
-            ),
-          ],
-        ));
+    return AlertDialog(
+      title: Text("Middle Modal"),
+      content: Text("This will show each individual study space"),
+
+    );
+        
   }
 }
