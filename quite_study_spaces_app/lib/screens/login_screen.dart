@@ -44,6 +44,11 @@ class _LoginScreen extends State<LoginScreen> {
               onPressed: state.logIn,
               child: Text('Log In'),
             ),
+            Text('Not a user?'),
+            ElevatedButton(
+              onPressed: state.goToSignUp,
+              child: Text("Sign Up"),
+            ),
           ],
         ));
       }),

@@ -20,4 +20,9 @@ class ScreenState extends ChangeNotifier {
     _status = "signup";
     notifyListeners();
   }
+
+  void goToSignUp() {
+    _status = "signIp";
+    notifyListeners();
+  }
 }
