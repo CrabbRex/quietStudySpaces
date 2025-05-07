@@ -22,7 +22,7 @@ class ScreenState extends ChangeNotifier {
   }
 
   void goToSignUp() {
-    _status = "signIp";
+    _status = "signUp";
     notifyListeners();
   }
 }

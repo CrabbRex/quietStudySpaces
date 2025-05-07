@@ -17,7 +17,7 @@ class CurrentScreen extends StatelessWidget {
             color: const Color(0xffF2D3AC),
             child: switch(state.screenStatus) {
               "login" => LoginScreen(),
-              "signup" => SignupScreen(),
+              "signUp" => SignupScreen(),
               "homeScreen" => const HomeScreen(),
               _ => const LoginScreen(),
             }
