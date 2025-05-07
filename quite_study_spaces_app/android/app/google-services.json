@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "79290427415",
+    "project_id": "quietstudyspaces",
+    "storage_bucket": "quietstudyspaces.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:79290427415:android:65ae00cbec834c7467d452",
+        "android_client_info": {
+          "package_name": "com.example.quite_study_spaces_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJB3cxlvHa0i2EkBgSDpvqNx_NI1qsz5o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
