@@ -12,6 +12,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreen extends State<LoginScreen> {
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,21 +29,33 @@ class _LoginScreen extends State<LoginScreen> {
             SizedBox(
               width: 400,
               child: TextFormField(
+                controller: _emailController,
                 decoration: const InputDecoration(
-                    border: OutlineInputBorder(), labelText: "UserName"),
+                    border: OutlineInputBorder(), labelText: "Email"),
               ),
             ),
             SizedBox(height: 40),
             SizedBox(
               width: 400,
               child: TextFormField(
+                controller: _passwordController,
                 decoration: const InputDecoration(
                     border: OutlineInputBorder(), labelText: "Password"),
               ),
             ),
             SizedBox(height: 40),
             ElevatedButton(
-              onPressed: state.logIn,
+              onPressed: () {
+                if(_emailController.text.isEmpty || _passwordController.text.isEmpty) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text("Please Enter a Valid Email and Password."),
+                      duration: Duration(seconds: 2),
+                    ),
+                  );
+                }
+                print(_emailController.text);
+              },
               child: Text('Log In'),
             ),
             Text('Not a user?'),
