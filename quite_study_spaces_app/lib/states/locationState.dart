@@ -7,17 +7,17 @@ class Locationstate extends ChangeNotifier{
       id: "1",
       name: "Marcelo's Cafe",
       description: "Nice cafe near Bondi",
-      location: "227 Bondi Road",
-      lat: "-33.89427687142927",
-      long: "151.2665040116401",
+      address: "227 Bondi Road",
+      filterTags: ["View", "Cafe"],
+      photoURL: "N/A"
       ),
       Location(
       id: "2",
       name: "Up South Bondi",
       description: "Tik Tok Famous",
-      location: "301 Bondi Road",
-      lat: "-33.89427687142927",
-      long: "151.2665040116401",
+      address: "301 Bondi Road",
+      filterTags: ["View"],
+      photoURL: "N/A"
       ),
   ];
 
