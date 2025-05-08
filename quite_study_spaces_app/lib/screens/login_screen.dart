@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:quite_study_spaces_app/services/auth_service.dart';
 import 'package:quite_study_spaces_app/states/screen_state.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -45,7 +46,7 @@ class _LoginScreen extends State<LoginScreen> {
             ),
             SizedBox(height: 40),
             ElevatedButton(
-              onPressed: () {
+              onPressed: () async {
                 if(_emailController.text.isEmpty || _passwordController.text.isEmpty) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
@@ -54,7 +55,23 @@ class _LoginScreen extends State<LoginScreen> {
                     ),
                   );
                 }
-                print(_emailController.text);
+
+                final authService = AuthService();
+                final result = await AuthService().logIn(
+                  email: _emailController.text, 
+                  password: _passwordController.text,
+                );
+
+                if (result == 'Sucess'){
+                  state.goToHomeScreen();
+                } else{
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(result!),
+                      duration: Duration(seconds: 2),
+                      ),
+                  );
+                }
               },
               child: Text('Log In'),
             ),
