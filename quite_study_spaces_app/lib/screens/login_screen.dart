@@ -57,7 +57,7 @@ class _LoginScreen extends State<LoginScreen> {
                 }
 
                 final authService = AuthService();
-                final result = await AuthService().logIn(
+                final result = await authService.logIn(
                   email: _emailController.text, 
                   password: _passwordController.text,
                 );
