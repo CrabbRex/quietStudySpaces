@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:quite_study_spaces_app/services/auth_service.dart';
 import 'package:quite_study_spaces_app/states/screen_state.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -49,16 +50,31 @@ class _SignupScreen extends State<SignupScreen> {
               ),
               SizedBox(height: 40),
               ElevatedButton(
-                onPressed: () {
-                  if (_emailController.text.isEmpty ||
-                      _passwordController.text.isEmpty) {
+                onPressed: () async {
+                  if (_emailController.text.isEmpty || _passwordController.text.isEmpty) {
                     //https://api.flutter.dev/flutter/material/ScaffoldMessenger-class.html
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                       content: Text("Please Enter a Valid Email and Password."),
                       duration: Duration(seconds: 2),
                     ));
                   }
-                  state.signUp;
+                  
+                  final authService = AuthService();
+                  final result = await authService.signUp(
+                    email: _emailController.text,
+                    password: _passwordController.text,
+                  );
+
+                  if (result == 'Sucess') {
+                    state.goToHomeScreen();
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(result!),
+                        duration: Duration(seconds: 2),
+                      ),
+                    );
+                  }
                 },
                 child: Text('Sign Up'),
               ),

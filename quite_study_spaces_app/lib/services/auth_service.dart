@@ -11,6 +11,9 @@ class AuthService {
         email: email, 
         password: password
       );
+
+      await Future.delayed(const Duration(seconds: 1));
+      
       return 'Sucess';
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
