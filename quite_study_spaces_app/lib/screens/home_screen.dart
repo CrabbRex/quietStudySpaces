@@ -15,6 +15,16 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreen extends State<HomeScreen> {
+  @override
+  void initState() {
+    super.initState();
+    //Calling the Locationstate function to update the state with all the 
+    //locations in the database.
+    Provider.of<Locationstate>(context, listen: false).getLocationsFromDB();
+    print("INIT");
+  }
+
+
   void _openAddLocationModal() {
     showModalBottomSheet(
       isScrollControlled: true,
