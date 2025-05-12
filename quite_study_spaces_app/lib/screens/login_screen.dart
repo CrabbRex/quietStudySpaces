@@ -40,6 +40,7 @@ class _LoginScreen extends State<LoginScreen> {
               width: 400,
               child: TextFormField(
                 controller: _passwordController,
+                obscureText: true,
                 decoration: const InputDecoration(
                     border: OutlineInputBorder(), labelText: "Password"),
               ),

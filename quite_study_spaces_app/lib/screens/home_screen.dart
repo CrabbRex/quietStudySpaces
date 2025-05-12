@@ -4,6 +4,7 @@ import 'package:quite_study_spaces_app/screens/modals/add_location.dart';
 import 'package:quite_study_spaces_app/states/locationState.dart';
 import 'package:quite_study_spaces_app/states/screen_state.dart';
 import 'package:quite_study_spaces_app/screens/modals/show_location.dart';
+import 'package:quite_study_spaces_app/screens/modals/filter_location.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -40,6 +41,14 @@ class _HomeScreen extends State<HomeScreen> {
     );
   }
 
+  void _openFilterModal() {
+    showModalBottomSheet(
+      isScrollControlled: true,
+      context: context,
+      builder: (modalContext) => FilterLocation()
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,7 +72,6 @@ class _HomeScreen extends State<HomeScreen> {
                   return Card(
                     clipBehavior: Clip.hardEdge,
                     elevation: 3,
-                    
                     child: ListTile(
                       title: Text(location.name),
                       subtitle: Text(location.description),
@@ -87,7 +95,7 @@ class _HomeScreen extends State<HomeScreen> {
                   ),
                   SizedBox(height: 16),
                   ElevatedButton(
-                    onPressed: Placeholder.new, 
+                    onPressed: _openFilterModal, 
                     child: Text("Filter"))
                 ],
               )

@@ -4,9 +4,31 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Locationstate extends ChangeNotifier{
   final List<Location> _userLocations = [];
+  List<String> _activeFilters = [];
 
   List<Location> getLocations() {
-    return _userLocations;
+    //No filters set:
+    if(_activeFilters.isEmpty) return _userLocations;
+
+    //Some filters set:
+    List<Location> filtered = [];
+    for (var location in _userLocations){
+      bool matchesAll = true;
+
+      for(var filter in _activeFilters) {
+        //If a location does not have one of the filters, don't add it to the filtered list.
+        if(!location.filterTags.contains(filter)){
+          matchesAll = false;
+          break;
+        }
+      }
+      if (matchesAll) {
+        filtered.add(location);
+      }
+    }
+    print(filtered);
+    print("FILTERED");
+    return filtered;
   }
 
   void addLocation(Location locationToAdd) {
@@ -16,6 +38,13 @@ class Locationstate extends ChangeNotifier{
 
   void deleteLocation(Location locationToAdd) {
     _userLocations.removeWhere((loc) => loc.id == locationToAdd.id);
+    notifyListeners();
+  }
+
+  //Set filters to variable List _activeFilters.
+  //Called whenever the search filter's are changed.
+  void setFilters(List<String> filters) {
+    _activeFilters = filters;
     notifyListeners();
   }
 
