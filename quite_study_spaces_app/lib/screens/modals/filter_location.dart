@@ -53,6 +53,7 @@ class _FilterLocationState extends State<FilterLocation> {
                 final selectedFilters = <String>[];
                 if(isFirstChecked) selectedFilters.add("Cafe");
                 if(isSecondChecked) selectedFilters.add("View");
+                //Set filters in LocationState file.
                 Provider.of<Locationstate>(context, listen: false).setFilters(selectedFilters);
                 Navigator.pop(context);
               },

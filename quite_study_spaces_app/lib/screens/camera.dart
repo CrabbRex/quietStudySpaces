@@ -47,6 +47,20 @@ class _takePhotoScreenState extends State<takePhotoScreen> {
           }
         },
       ),
-    );
+      floatingActionButton: FloatingActionButton(
+              onPressed: () async {
+                try {
+                  await _initialiseControllerFuture;
+                  final _image = await _controller.takePicture();
+                  Navigator.pop(context, _image.path);
+
+                } catch (e) {
+                  print("Error taking photo");
+                }
+              },
+              child: Icon(Icons.camera_alt),
+            ),
+          floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      );
   }
 }

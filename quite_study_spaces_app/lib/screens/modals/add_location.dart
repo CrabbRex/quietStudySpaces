@@ -67,6 +67,7 @@ class _NewLocationState extends State<NewLocation> {
                           builder: (context) => takePhotoScreen(camera: cameras.first),
                         ),
                       );
+                      print(imageFile.toString());
                     },
                     child: Text("Add Photos")
                   ),
