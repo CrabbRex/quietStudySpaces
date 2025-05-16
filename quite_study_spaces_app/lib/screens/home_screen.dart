@@ -7,6 +7,7 @@ import 'package:quite_study_spaces_app/states/locationState.dart';
 import 'package:quite_study_spaces_app/states/screen_state.dart';
 import 'package:quite_study_spaces_app/screens/modals/show_location.dart';
 import 'package:quite_study_spaces_app/screens/modals/filter_location.dart';
+import 'package:quite_study_spaces_app/models/location_model.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -36,10 +37,12 @@ class _HomeScreen extends State<HomeScreen> {
     );
   }
 
-  void _openIndividualLocationModal() {
+  void _openIndividualLocationModal(Location location) {
     showDialog(
-      context: context, 
-      builder: (modalContext) => ShowLocation()
+      context: context,
+      barrierDismissible: true,
+      //Pass location for modal to access each database entry.
+      builder: (modalContext) => ShowLocation(location: location)
     );
   }
 
@@ -78,7 +81,7 @@ class _HomeScreen extends State<HomeScreen> {
                       title: Text(location.name),
                       subtitle: Text(location.description),
                       onTap:() {
-                        _openIndividualLocationModal();
+                        _openIndividualLocationModal(location);
                       }
                     )
                   );

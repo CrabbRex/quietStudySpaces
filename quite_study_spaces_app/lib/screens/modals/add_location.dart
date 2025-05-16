@@ -19,6 +19,7 @@ class _NewLocationState extends State<NewLocation> {
   final locDescController = TextEditingController();
   bool isFirstChecked = false;
   bool isSecondChecked = false;
+  String? _capturedImagePath;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -73,14 +74,20 @@ class _NewLocationState extends State<NewLocation> {
                       final cameras = await availableCameras();
                       //Use Navigator.push to open camera
                       //Image returned goes into imageFile var
-                      final imageFile = await Navigator.push(//Nav Push pushes this screen onto the navigation stack.
+                      final imagePath = await Navigator.push(//Nav Push pushes this screen onto the navigation stack.
                         context,
                         MaterialPageRoute(
                           //A modal route that replaces the entire screen
                           builder: (context) => takePhotoScreen(camera: cameras.first),
                         ),
                       );
-                      print(imageFile.toString());
+                      //Stub implementation:
+                      if (imagePath != null) {
+                        setState(() {
+                          _capturedImagePath = imagePath;
+                        });
+                      }
+                      print(_capturedImagePath.toString());
                     },
                     child: Text("Add Photos")
                   ),
@@ -97,7 +104,7 @@ class _NewLocationState extends State<NewLocation> {
                   "Address" : locAddressController.text,
                   "description" : locDescController.text,
                   "filterTags" : tags,
-                  "photoURL" : "N/A",
+                  "photoURL" : _capturedImagePath != null ? "placeholder" : "placeholder",
                 };
                 FirebaseFirestore.instance.collection("Locations").add(location);
                 Provider.of<Locationstate>(context, listen: false).getLocationsFromDB();

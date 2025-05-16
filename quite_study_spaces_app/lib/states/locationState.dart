@@ -48,6 +48,8 @@ class Locationstate extends ChangeNotifier{
     notifyListeners();
   }
 
+  
+
   //Retrieve the collection of locations stored on cloud firestore.
   //Loop through collection and add to _userLocations.
   Future<void> getLocationsFromDB() async {
