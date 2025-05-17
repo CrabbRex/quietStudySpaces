@@ -2,6 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:quite_study_spaces_app/models/location_model.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 
 class ShowLocation extends StatefulWidget {
@@ -13,7 +15,32 @@ class ShowLocation extends StatefulWidget {
 }
 
 class _ShowLocationState extends State<ShowLocation> {
+  final user = FirebaseAuth.instance.currentUser;
   bool isFavorite = false; 
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUserFavourites();
+  }
+
+  Future<void> _loadUserFavourites() async {
+    if (user == null) return;
+
+    final snapshot = await FirebaseFirestore.instance.collection('users').doc(user!.uid).get();
+
+    if(snapshot.exists) {
+      final data = snapshot.data();
+      if (data != null && data.containsKey('favourites')) {
+        List<dynamic> favs = data['favourites'];
+        setState(() {
+          isFavorite = favs.contains(widget.location.id);
+          print(favs.toString());
+        });
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -35,10 +62,21 @@ class _ShowLocationState extends State<ShowLocation> {
           SizedBox(height: 8),
           Center(
             child: IconButton(
-              onPressed: () {
+              onPressed: () async {
                 setState(() {
                   isFavorite = !isFavorite;
                 });
+                final userDoc = FirebaseFirestore.instance.collection('users').doc(user!.uid);
+                if(isFavorite)  {
+                  await userDoc.update({
+                    'favourites' : FieldValue.arrayUnion([widget.location.id]),
+                  });
+                }
+                if(!isFavorite) {
+                  await userDoc.update({
+                    'favourites' : FieldValue.arrayRemove([widget.location.id]),
+                  });
+                }
               },
               icon: Icon(isFavorite ? Icons.favorite : Icons.favorite_border),
             )
