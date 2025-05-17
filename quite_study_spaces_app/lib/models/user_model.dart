@@ -1,10 +1,10 @@
 class User{
-  final String id;
+  final String uid;
   final String email;
   final List<String> favourites;
 
   User({
-    required this.id,
+    required this.uid,
     required this.email,
     required this.favourites,
   });

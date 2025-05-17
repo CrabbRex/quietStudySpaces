@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quite_study_spaces_app/services/auth_service.dart';
 import 'package:quite_study_spaces_app/states/screen_state.dart';
+import 'package:quite_study_spaces_app/services/profile_service.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -64,6 +66,10 @@ class _LoginScreen extends State<LoginScreen> {
                 );
 
                 if (result == 'Sucess'){
+                  final FirebaseUser = FirebaseAuth.instance.currentUser;
+                  if(FirebaseUser != null) {
+                    await createUserProfile(FirebaseUser);
+                  }
                   state.goToHomeScreen();
                 } else{
                   ScaffoldMessenger.of(context).showSnackBar(
