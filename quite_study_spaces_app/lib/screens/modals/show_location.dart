@@ -13,6 +13,7 @@ class ShowLocation extends StatefulWidget {
 }
 
 class _ShowLocationState extends State<ShowLocation> {
+  bool isFavorite = false; 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -21,9 +22,9 @@ class _ShowLocationState extends State<ShowLocation> {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Address: ${widget.location.address}"),
-          SizedBox(height: 8),
           Text("Details:  ${widget.location.description}"),
+          SizedBox(height: 8),
+          Text("Address: ${widget.location.address}"),
           SizedBox(height: 8),
           Text("Tags: ${widget.location.filterTags.join(', ')}"),
           SizedBox(height: 8),
@@ -31,6 +32,17 @@ class _ShowLocationState extends State<ShowLocation> {
             height: 100,
             child: Placeholder(),
           ),
+          SizedBox(height: 8),
+          Center(
+            child: IconButton(
+              onPressed: () {
+                setState(() {
+                  isFavorite = !isFavorite;
+                });
+              },
+              icon: Icon(isFavorite ? Icons.favorite : Icons.favorite_border),
+            )
+          )
         ],
       ),
       
