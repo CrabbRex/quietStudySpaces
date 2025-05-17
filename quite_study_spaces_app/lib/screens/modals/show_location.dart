@@ -1,5 +1,8 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:quite_study_spaces_app/models/location_model.dart';
+
 
 class ShowLocation extends StatefulWidget {
   final Location location;
@@ -24,16 +27,13 @@ class _ShowLocationState extends State<ShowLocation> {
           SizedBox(height: 8),
           Text("Tags: ${widget.location.filterTags.join(', ')}"),
           SizedBox(height: 8),
-          widget.location.photoURL != "N/A"
-            ? Image.network(widget.location.photoURL)
-            : Image.asset(
-              'assets/images/placeholder.jpg',
-              height: 150,
-              width: double.infinity,
-              fit: BoxFit.cover,
-            ),
+          Container(
+            height: 100,
+            child: Placeholder(),
+          ),
         ],
-      )
+      ),
+      
     );
   }
 }
