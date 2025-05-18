@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 
 class ScreenState extends ChangeNotifier {
   String _status = "login";
+  int _selectedNavIndex = 1;
 
   String get screenStatus => _status;
+  int get selectedNavIndex => _selectedNavIndex;
 
   void logOut() {
     _status = "login";
@@ -28,6 +30,11 @@ class ScreenState extends ChangeNotifier {
 
   void goToHomeScreen() {
     _status = "homeScreen";
+    notifyListeners();
+  }
+
+  void changeTab(int index){
+    _selectedNavIndex = index;
     notifyListeners();
   }
 }

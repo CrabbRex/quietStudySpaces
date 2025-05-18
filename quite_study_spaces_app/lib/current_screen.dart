@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:quite_study_spaces_app/screens/home_screen.dart';
 import 'package:quite_study_spaces_app/screens/login_screen.dart';
 import 'package:quite_study_spaces_app/screens/signup_screen.dart';
+import 'package:quite_study_spaces_app/widgets/nav_bar.dart';
 import 'states/screen_state.dart';
 
 class CurrentScreen extends StatelessWidget {
@@ -18,7 +19,8 @@ class CurrentScreen extends StatelessWidget {
             child: switch(state.screenStatus) {
               "login" => LoginScreen(),
               "signUp" => SignupScreen(),
-              "homeScreen" => const HomeScreen(),
+              //homescreen runs through navbar wrapper.
+              "homeScreen" => const navBar(),
               _ => const LoginScreen(),
             }
           );
