@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
+import 'package:quite_study_spaces_app/main.dart';
 import 'package:quite_study_spaces_app/states/user_profile_state.dart';
 import 'package:quite_study_spaces_app/widgets/background.dart';
 
@@ -44,17 +45,48 @@ class _favouriteScreenState extends State<favouriteScreen> {
       const backgroundWidget(),
       Column(
         children: [
-          const Padding(
-            padding: EdgeInsets.all(16),
-            child: Text("Your favourite locations: "),
+          Container(
+            margin: const EdgeInsets.symmetric(vertical: 16),
+            padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 24),
+            decoration: BoxDecoration(
+              color: Color(0xFF153801),
+              borderRadius: BorderRadius.circular(16),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: const [
+                Icon(Icons.favorite, color: Colors.white,),
+                SizedBox(width: 20),
+                Text(
+                  "Your Favourite Locations:",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFFFEFCFD),
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
           ),
           Expanded(
             child: ListView.builder(
               itemCount: favourites.length,
               itemBuilder: (context, index) {
                 final location = favourites[index];
-                return ListTile(
-                  title: Text(location.name),
+                return Center(
+                  child: Container(
+                    width: 300,
+                    child: ListTile(
+                      title: Text(
+                        "${index+1}. ${location.name}",
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      )
+                    )
+                  ),
                 );
               },
             ),
