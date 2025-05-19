@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:quite_study_spaces_app/states/screen_state.dart';
 import 'package:quite_study_spaces_app/states/user_profile_state.dart';
 import 'package:quite_study_spaces_app/widgets/background.dart';
+import 'package:quite_study_spaces_app/widgets/quiet_Button.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -26,29 +27,34 @@ class _ProfileScreenState extends State<ProfileScreen> {
             const backgroundWidget(),
             Center(
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ElevatedButton(
+                  quietButton(
                     onPressed: Placeholder.new,
-                    child: Text("Manage Account"),
+                    label: "Manage Account",
                   ),
-                  ElevatedButton(
+                  SizedBox(height: 16,),
+                  quietButton(
                     onPressed: Placeholder.new,
-                    child: Text("Manage Account"),
+                    label: "Manage Account",
                   ),
-                  ElevatedButton(
+                  SizedBox(height: 16,),
+                  quietButton(
                     onPressed: Placeholder.new,
-                    child: Text("Change Email"),
+                    label: "Change Email",
                   ),
-                  ElevatedButton(
+                  SizedBox(height: 16,),
+                  quietButton(
                     onPressed: Placeholder.new,
-                    child: Text("Delete Account"),
+                    label: "Delete Account",
                   ),
-                  ElevatedButton(
+                  SizedBox(height: 16,),
+                  quietButton(
                     onPressed: () async {
                       await FirebaseAuth.instance.signOut();
                       screenState.logOut();
                     },
-                    child: Text("Sign Out"),
+                    label: "Sign Out",
                   ),
                 ],
               ),
