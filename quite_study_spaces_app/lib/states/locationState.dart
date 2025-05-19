@@ -55,6 +55,7 @@ class Locationstate extends ChangeNotifier{
   Future<void> getLocationsFromDB() async {
     try {
       final querySnapshot = await FirebaseFirestore.instance.collection("Locations").get();
+      _userLocations.clear();
 
       for(var doc in querySnapshot.docs){
         final data = doc.data();
