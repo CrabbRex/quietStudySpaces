@@ -71,6 +71,15 @@ void main() async {
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(12)),)
               ),
             ),
+            outlinedButtonTheme: OutlinedButtonThemeData(
+              style: OutlinedButton.styleFrom(
+                backgroundColor: Colors.transparent,
+                foregroundColor: Colors.black,
+                textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 36), 
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(32)),)
+              )
+            ),
             textTheme: const TextTheme(
               bodyMedium: TextStyle(fontSize: 16, color: black),
               titleLarge: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),

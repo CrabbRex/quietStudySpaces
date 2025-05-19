@@ -94,9 +94,9 @@ class _HomeScreen extends State<HomeScreen> {
                           onPressed: _openAddLocationModal,
                           label: "Add Location",
                         ),
-                        SizedBox(height: 16),
-                        ElevatedButton(
-                            onPressed: _openFilterModal, child: Text("Filter"))
+                        SizedBox(height: 8),
+                        quietButton(
+                            onPressed: _openFilterModal, label: "Filter")
                       ],
                     )),
               ],

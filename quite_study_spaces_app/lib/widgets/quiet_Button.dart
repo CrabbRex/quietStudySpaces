@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quite_study_spaces_app/main.dart';
 
 Widget quietButton({required VoidCallback onPressed, required String label}) {
   return Container(
@@ -8,9 +9,9 @@ Widget quietButton({required VoidCallback onPressed, required String label}) {
     ),
     child: ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Color(0xFF153801),
         shadowColor: Colors.transparent,
-        padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 32),
+        padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 56),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       ),
       onPressed: onPressed, 
@@ -19,6 +20,7 @@ Widget quietButton({required VoidCallback onPressed, required String label}) {
         style: const TextStyle(
           fontSize: 20,
           fontWeight: FontWeight.bold,
+          color: offWhite,
         )
       )
     )

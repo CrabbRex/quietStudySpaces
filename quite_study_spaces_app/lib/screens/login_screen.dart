@@ -1,10 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:quite_study_spaces_app/main.dart';
 import 'package:quite_study_spaces_app/services/auth_service.dart';
 import 'package:quite_study_spaces_app/states/screen_state.dart';
 import 'package:quite_study_spaces_app/services/profile_service.dart';
 import 'package:quite_study_spaces_app/widgets/background.dart';
+import 'package:quite_study_spaces_app/widgets/quiet_Button.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -37,8 +39,15 @@ class _LoginScreen extends State<LoginScreen> {
                   width: 400,
                   child: TextFormField(
                     controller: _emailController,
+                    style: const TextStyle(color: Colors.white),
                     decoration: const InputDecoration(
-                        border: OutlineInputBorder(), labelText: "Email"),
+                        border: OutlineInputBorder(), 
+                        labelText: "Email",
+                        labelStyle: TextStyle(color: Colors.white),
+                        filled: true,
+                        fillColor: darkgreen,
+                        floatingLabelBehavior: FloatingLabelBehavior.never,
+                        ),
                   ),
                 ),
                 SizedBox(height: 40),
@@ -47,12 +56,19 @@ class _LoginScreen extends State<LoginScreen> {
                   child: TextFormField(
                     controller: _passwordController,
                     obscureText: true,
+                    style: const TextStyle(color: Colors.white),
                     decoration: const InputDecoration(
-                        border: OutlineInputBorder(), labelText: "Password"),
+                        border: OutlineInputBorder(), 
+                        labelText: "Password",
+                        labelStyle: TextStyle(color: Colors.white),
+                        filled: true,
+                        fillColor: darkgreen,
+                        floatingLabelBehavior: FloatingLabelBehavior.never,
+                      ),
                   ),
                 ),
                 SizedBox(height: 40),
-                ElevatedButton(
+                OutlinedButton(
                   onPressed: () async {
                     if (_emailController.text.isEmpty ||
                         _passwordController.text.isEmpty) {
@@ -88,8 +104,9 @@ class _LoginScreen extends State<LoginScreen> {
                   },
                   child: Text('Log In'),
                 ),
+                SizedBox(height: 16),
                 Text('Not a user?'),
-                ElevatedButton(
+                OutlinedButton(
                   onPressed: state.goToSignUp,
                   child: Text("Sign Up"),
                 ),

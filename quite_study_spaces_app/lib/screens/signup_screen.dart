@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:quite_study_spaces_app/main.dart';
 import 'package:quite_study_spaces_app/services/auth_service.dart';
 import 'package:quite_study_spaces_app/states/screen_state.dart';
 import 'package:quite_study_spaces_app/widgets/background.dart';
@@ -38,8 +39,15 @@ class _SignupScreen extends State<SignupScreen> {
                   width: 400,
                   child: TextFormField(
                     controller: _emailController,
+                    style: const TextStyle(color: Colors.white),
                     decoration: const InputDecoration(
-                        border: OutlineInputBorder(), labelText: "Email"),
+                        border: OutlineInputBorder(), 
+                        labelText: "Email",
+                        labelStyle: TextStyle(color: Colors.white),
+                        filled: true,
+                        fillColor: darkgreen,
+                        floatingLabelBehavior: FloatingLabelBehavior.never,
+                      ),
                   ),
                 ),
                 SizedBox(height: 40),
@@ -47,12 +55,19 @@ class _SignupScreen extends State<SignupScreen> {
                   width: 400,
                   child: TextFormField(
                     controller: _passwordController,
+                    style: const TextStyle(color: Colors.white),
                     decoration: const InputDecoration(
-                        border: OutlineInputBorder(), labelText: "Password"),
+                        border: OutlineInputBorder(), 
+                        labelText: "Password",
+                        labelStyle: TextStyle(color: Colors.white),
+                        filled: true,
+                        fillColor: darkgreen,
+                        floatingLabelBehavior: FloatingLabelBehavior.never,
+                      ),
                   ),
                 ),
                 SizedBox(height: 40),
-                ElevatedButton(
+                OutlinedButton(
                   onPressed: () async {
                     if (_emailController.text.isEmpty ||
                         _passwordController.text.isEmpty) {
@@ -83,6 +98,9 @@ class _SignupScreen extends State<SignupScreen> {
                   },
                   child: Text('Sign Up'),
                 ),
+                SizedBox(height: 8),
+                TextButton(
+                  onPressed: state.logOut, child: Text("Cancel"),)
               ],
             ))
           ]));
