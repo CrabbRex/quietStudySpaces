@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:quite_study_spaces_app/states/screen_state.dart';
 import 'package:quite_study_spaces_app/states/user_profile_state.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -12,7 +14,7 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
-    return Consumer<UserProfileState>(builder: (context, state, child) {
+    return Consumer2<UserProfileState, ScreenState>(builder: (context, state, screenState, child) {
       return Scaffold(
         appBar: AppBar(
           title: Text("Hello, ${state.email}"),
@@ -38,9 +40,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: Text("Delete Account"), 
               ),
               ElevatedButton(
-                onPressed: Placeholder.new,
+                onPressed: () async{
+                  await FirebaseAuth.instance.signOut();
+                  screenState.logOut();
+                },
                 child: Text("Sign Out"), 
-              ),
+                ),
             ],
           ),
           
