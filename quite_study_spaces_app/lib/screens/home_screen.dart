@@ -61,7 +61,30 @@ class _HomeScreen extends State<HomeScreen> {
         title: Text("Quiet Study Spaces"),
         actions: [],
       ),
-      body: Consumer2<ScreenState, Locationstate>(builder: (context, state, locaState, child) {
+      //Stack to layer images behind UI.
+      body: Stack(
+        children: [
+          Positioned(
+            right: 0,
+            top: 50,
+            child: Transform.scale(
+              scale: 0.5,
+              child: Image.asset('assets/vines1.png', fit: BoxFit.contain),
+            ),
+          ),
+          Positioned(
+            left: 0,
+            bottom: 0,
+            child: Transform.rotate(
+              angle: -2.5,
+              child: Transform.scale(
+                scale: 0.5,
+                child: Image.asset('assets/vines2.png', fit: BoxFit.contain),
+              ),
+            ),
+          ),
+      
+      Consumer2<ScreenState, Locationstate>(builder: (context, state, locaState, child) {
         final locations = locaState.getLocations();
         return Column(
           mainAxisSize: MainAxisSize.min,
@@ -108,6 +131,8 @@ class _HomeScreen extends State<HomeScreen> {
           ],
         );
       }),
+        ]
+    )
     );
   }
 }
