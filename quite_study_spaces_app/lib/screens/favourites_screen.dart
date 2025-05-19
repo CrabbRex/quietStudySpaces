@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
 import 'package:quite_study_spaces_app/states/user_profile_state.dart';
+import 'package:quite_study_spaces_app/widgets/background.dart';
 
 class favouriteScreen extends StatefulWidget {
   const favouriteScreen({super.key});
@@ -32,31 +33,34 @@ class _favouriteScreenState extends State<favouriteScreen> {
     final userProfile = Provider.of<UserProfileState>(context);
     final favourites = userProfile.favouriteLocations;
 
-    if(_isLoading) {
+    if (_isLoading) {
       return const Center(child: CircularProgressIndicator());
     }
-    if(favourites.isEmpty) {
+    if (favourites.isEmpty) {
       return const Center(child: Text("No favourite locations yet."));
     }
 
-    return Column(
-      children: [
-        const Padding(
-          padding: EdgeInsets.all(16),
-          child: Text("Your favourite locations: "),
-        ),
-        Expanded(
-          child: ListView.builder(
-            itemCount: favourites.length,
-            itemBuilder: (context, index) {
-              final location = favourites[index];
-              return ListTile(
-                title: Text(location.name),
-              );
-            },
+    return Stack(children: [
+      const backgroundWidget(),
+      Column(
+        children: [
+          const Padding(
+            padding: EdgeInsets.all(16),
+            child: Text("Your favourite locations: "),
           ),
-        ),
-      ],
-    );
+          Expanded(
+            child: ListView.builder(
+              itemCount: favourites.length,
+              itemBuilder: (context, index) {
+                final location = favourites[index];
+                return ListTile(
+                  title: Text(location.name),
+                );
+              },
+            ),
+          ),
+        ],
+      )
+    ]);
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quite_study_spaces_app/services/auth_service.dart';
 import 'package:quite_study_spaces_app/states/screen_state.dart';
+import 'package:quite_study_spaces_app/widgets/background.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -27,59 +28,64 @@ class _SignupScreen extends State<SignupScreen> {
             title: Text("Quiet Study Spaces"),
             actions: [],
           ),
-          body: Center(
-              child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(
-                width: 400,
-                child: TextFormField(
-                  controller: _emailController,
-                  decoration: const InputDecoration(
-                      border: OutlineInputBorder(), labelText: "Email"),
+          body: Stack(children: [
+            const backgroundWidget(),
+            Center(
+                child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: 400,
+                  child: TextFormField(
+                    controller: _emailController,
+                    decoration: const InputDecoration(
+                        border: OutlineInputBorder(), labelText: "Email"),
+                  ),
                 ),
-              ),
-              SizedBox(height: 40),
-              SizedBox(
-                width: 400,
-                child: TextFormField(
-                  controller: _passwordController,
-                  decoration: const InputDecoration(
-                      border: OutlineInputBorder(), labelText: "Password"),
+                SizedBox(height: 40),
+                SizedBox(
+                  width: 400,
+                  child: TextFormField(
+                    controller: _passwordController,
+                    decoration: const InputDecoration(
+                        border: OutlineInputBorder(), labelText: "Password"),
+                  ),
                 ),
-              ),
-              SizedBox(height: 40),
-              ElevatedButton(
-                onPressed: () async {
-                  if (_emailController.text.isEmpty || _passwordController.text.isEmpty) {
-                    //https://api.flutter.dev/flutter/material/ScaffoldMessenger-class.html
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text("Please Enter a Valid Email and Password."),
-                      duration: Duration(seconds: 2),
-                    ));
-                  }
-                  
-                  final authService = AuthService();
-                  final result = await authService.signUp(
-                    email: _emailController.text,
-                    password: _passwordController.text,
-                  );
-
-                  if (result == 'Sucess') {
-                    state.goToHomeScreen();
-                  } else {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(result!),
+                SizedBox(height: 40),
+                ElevatedButton(
+                  onPressed: () async {
+                    if (_emailController.text.isEmpty ||
+                        _passwordController.text.isEmpty) {
+                      //https://api.flutter.dev/flutter/material/ScaffoldMessenger-class.html
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content:
+                            Text("Please Enter a Valid Email and Password."),
                         duration: Duration(seconds: 2),
-                      ),
+                      ));
+                    }
+
+                    final authService = AuthService();
+                    final result = await authService.signUp(
+                      email: _emailController.text,
+                      password: _passwordController.text,
                     );
-                  }
-                },
-                child: Text('Sign Up'),
-              ),
-            ],
-          )));
+
+                    if (result == 'Sucess') {
+                      state.goToHomeScreen();
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(result!),
+                          duration: Duration(seconds: 2),
+                        ),
+                      );
+                    }
+                  },
+                  child: Text('Sign Up'),
+                ),
+              ],
+            ))
+          ]));
     });
   }
 }
