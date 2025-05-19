@@ -8,6 +8,7 @@ import 'package:quite_study_spaces_app/states/screen_state.dart';
 import 'package:quite_study_spaces_app/screens/modals/show_location.dart';
 import 'package:quite_study_spaces_app/screens/modals/filter_location.dart';
 import 'package:quite_study_spaces_app/models/location_model.dart';
+import 'package:quite_study_spaces_app/widgets/quiet_Button.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -25,7 +26,6 @@ class _HomeScreen extends State<HomeScreen> {
     //Calling the Locationstate function to update the state with all the 
     //locations in the database.
     Provider.of<Locationstate>(context, listen: false).getLocationsFromDB();
-    print("INIT");
   }
 
 
@@ -94,9 +94,9 @@ class _HomeScreen extends State<HomeScreen> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  ElevatedButton(
+                  quietButton(
                     onPressed: _openAddLocationModal,
-                    child: Text("Add Location"),
+                    label: "Add Location",
                   ),
                   SizedBox(height: 16),
                   ElevatedButton(

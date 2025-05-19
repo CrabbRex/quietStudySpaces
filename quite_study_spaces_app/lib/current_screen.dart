@@ -11,8 +11,7 @@ class CurrentScreen extends StatelessWidget {
 
   @override
   Widget build(context) {
-    return MaterialApp(
-      home: Consumer<ScreenState>(
+    return Consumer<ScreenState>(
         builder: (context, state, child){
           return Container(
             color: const Color(0xffF2D3AC),
@@ -25,7 +24,6 @@ class CurrentScreen extends StatelessWidget {
             }
           );
         }
-      )
     );
   }
 }
