@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quite_study_spaces_app/screens/favourites_screen.dart';
 import 'package:quite_study_spaces_app/screens/home_screen.dart';
+import 'package:quite_study_spaces_app/screens/profile_screen.dart';
 import 'package:quite_study_spaces_app/states/screen_state.dart';
 import 'package:quite_study_spaces_app/states/screen_state.dart';
 
@@ -15,7 +16,7 @@ class navBar extends StatelessWidget {
     final screen = [
       const favouriteScreen(),
       const HomeScreen(),
-      const Placeholder(),
+      const ProfileScreen(),
     ];
 
     return Scaffold(

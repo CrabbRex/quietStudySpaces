@@ -5,8 +5,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class UserProfileState extends ChangeNotifier{
   final List<Location> _favouriteLocations = [];
+  String? _email;
 
   List<Location> get favouriteLocations => _favouriteLocations;
+  String? get email => _email;
+
 
   Future<void> loaduserFavourites() async {
     //get instance of current user
@@ -20,6 +23,8 @@ class UserProfileState extends ChangeNotifier{
       if(userData==null) return;
       //Read in favourites from user profile
       final List<dynamic> favouriteIDs = userData['favourites'];
+
+      _email = userData['email'] as String?;
 
       _favouriteLocations.clear();
 
