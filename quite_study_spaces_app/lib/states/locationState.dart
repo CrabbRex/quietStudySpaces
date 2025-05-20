@@ -5,6 +5,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class Locationstate extends ChangeNotifier{
   final List<Location> _userLocations = [];
   List<String> _activeFilters = [];
+  bool _isLoading = false;
+
+  bool get isLoading => _isLoading;
 
   List<Location> getLocations() {
     //No filters set:
@@ -53,6 +56,8 @@ class Locationstate extends ChangeNotifier{
   //Retrieve the collection of locations stored on cloud firestore.
   //Loop through collection and add to _userLocations.
   Future<void> getLocationsFromDB() async {
+    _isLoading = true;
+    notifyListeners();
     try {
       final querySnapshot = await FirebaseFirestore.instance.collection("Locations").get();
       _userLocations.clear();
@@ -74,5 +79,7 @@ class Locationstate extends ChangeNotifier{
     } catch (e) {
       print("Error loading locations: $e");
     }
+    _isLoading = false;
+    notifyListeners();
   }
 }

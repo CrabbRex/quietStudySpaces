@@ -69,27 +69,30 @@ class _HomeScreen extends State<HomeScreen> {
           Consumer2<ScreenState, Locationstate>(
               builder: (context, state, locaState, child) {
             final locations = locaState.getLocations();
+            final isLoading = locaState.isLoading;
             return Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 Expanded(
-                    child: locations.isEmpty
-                        ? Center(child: Text("No Locations Yet"))
-                        : ListView.builder(
-                            padding: EdgeInsets.all(16),
-                            itemCount: locations.length,
-                            itemBuilder: (context, index) {
-                              final location = locations[index];
-                              return Card(
-                                  clipBehavior: Clip.hardEdge,
-                                  elevation: 3,
-                                  child: ListTile(
-                                      title: Text(location.name),
-                                      subtitle: Text(location.description),
-                                      onTap: () {
-                                        _openIndividualLocationModal(location);
-                                      }));
-                            })),
+                    child: isLoading
+                        ? Center(child: CircularProgressIndicator())
+                        : locations.isEmpty
+                          ? Center(child: Text("No Locations Yet"))
+                          : ListView.builder(
+                              padding: EdgeInsets.all(16),
+                              itemCount: locations.length,
+                              itemBuilder: (context, index) {
+                                final location = locations[index];
+                                return Card(
+                                    clipBehavior: Clip.hardEdge,
+                                    elevation: 3,
+                                    child: ListTile(
+                                        title: Text(location.name),
+                                        subtitle: Text(location.description),
+                                        onTap: () {
+                                          _openIndividualLocationModal(location);
+                                        }));
+                              })),
                 Padding(
                     padding: const EdgeInsets.only(bottom: 40.0),
                     child: Column(
