@@ -4,6 +4,7 @@ import 'package:camera/camera.dart';
 import 'package:quite_study_spaces_app/screens/camera.dart';
 import 'package:provider/provider.dart';
 import 'package:quite_study_spaces_app/states/locationState.dart';
+import 'package:quite_study_spaces_app/widgets/quiet_Button.dart';
 
 class FilterLocation extends StatefulWidget {
   const FilterLocation({super.key});
@@ -25,7 +26,34 @@ class _FilterLocationState extends State<FilterLocation> {
             Expanded(
               child: Column(
                 children: [
-                  Text("Add Filters To Your Search: "),
+                  Container(
+                    margin: const EdgeInsets.symmetric(vertical: 16),
+                    padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 48),
+                    decoration: BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(
+                          color: Colors.black,
+                          width: 2.0,
+                        )
+                      )
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: const [
+                        Icon(Icons.check, color: Colors.black,),
+                        SizedBox(width: 20),
+                        Text(
+                          "Filter Locations",
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
+                  ),
                   CheckboxListTile(
                     value: isFirstChecked,
                     onChanged: (bool? value) {
@@ -48,7 +76,7 @@ class _FilterLocationState extends State<FilterLocation> {
                 ],
               ),
             ),
-            ElevatedButton(
+            quietButton(
               onPressed: () {
                 final selectedFilters = <String>[];
                 if(isFirstChecked) selectedFilters.add("Cafe");
@@ -57,7 +85,10 @@ class _FilterLocationState extends State<FilterLocation> {
                 Provider.of<Locationstate>(context, listen: false).setFilters(selectedFilters);
                 Navigator.pop(context);
               },
-              child: Text("Filter Locations"),
+              label: "Apply Filters",
+            ),
+            TextButton(onPressed: () => Navigator.pop(context), 
+            child: Text("Cancel"),
             ),
           ],
         ));

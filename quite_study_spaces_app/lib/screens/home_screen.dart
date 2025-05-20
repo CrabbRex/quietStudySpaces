@@ -49,6 +49,8 @@ class _HomeScreen extends State<HomeScreen> {
 
   void _openFilterModal() {
     showModalBottomSheet(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(10.0))),
+        backgroundColor: lightGray,
         isScrollControlled: true,
         context: context,
         builder: (modalContext) => FilterLocation());
