@@ -26,8 +26,13 @@ class navBar extends StatelessWidget {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: screenState.selectedNavIndex,
         onTap: (index) => screenState.changeTab(index),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        selectedItemColor: Colors.black,
+        unselectedItemColor: Colors.black.withValues(alpha: 0.6),
+        showUnselectedLabels: true,
+        type: BottomNavigationBarType.fixed,
         items: const [
-          
           BottomNavigationBarItem(
             icon: Icon(Icons.favorite),
             label: 'Favourites',
