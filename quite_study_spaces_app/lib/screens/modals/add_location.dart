@@ -22,6 +22,39 @@ class _NewLocationState extends State<NewLocation> {
   bool isSecondChecked = false;
   String? _capturedImagePath;
   bool _photoTaken = false;
+
+  void _saveLocation() {
+    if(locNameController.text.trim().isEmpty || locAddressController.text.trim().isEmpty
+        || locDescController.text.trim().isEmpty) {
+          showDialog(
+            context: context, 
+            builder: (dialogContent) => AlertDialog(
+              title: Text("Invalid Input"),
+              content: Text("Please enter a valid Name, Address and Description."),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(dialogContent),
+                  child: Text("Okay")),
+              ],
+            )
+          );
+          return;
+    }
+    List<String> tags = [];
+    if (isFirstChecked) tags.add("Cafe");
+    if (isSecondChecked) tags.add("View");
+    final location =  {
+      "Name" : locNameController.text,
+      "Address" : locAddressController.text,
+      "description" : locDescController.text,
+      "filterTags" : tags,
+      "photoURL" : _capturedImagePath != null ? "placeholder" : "placeholder",
+    };
+    FirebaseFirestore.instance.collection("Locations").add(location);
+    Provider.of<Locationstate>(context, listen: false).getLocationsFromDB();
+    Navigator.pop(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -107,21 +140,7 @@ class _NewLocationState extends State<NewLocation> {
             ),
             quietButton(
               onPressed: () {
-                List<String> tags = [];
-                if (isFirstChecked) tags.add("Cafe");
-                if (isSecondChecked) tags.add("View");
-                final location =  {
-                  "Name" : locNameController.text,
-                  "Address" : locAddressController.text,
-                  "description" : locDescController.text,
-                  "filterTags" : tags,
-                  "photoURL" : _capturedImagePath != null ? "placeholder" : "placeholder",
-                };
-                FirebaseFirestore.instance.collection("Locations").add(location);
-                Provider.of<Locationstate>(context, listen: false).getLocationsFromDB();
-                
-                Navigator.pop(context);
-
+                _saveLocation();
               },
               label: "Add Location",
             ),
