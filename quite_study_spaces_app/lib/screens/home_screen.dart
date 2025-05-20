@@ -84,6 +84,7 @@ class _HomeScreen extends State<HomeScreen> {
                               itemBuilder: (context, index) {
                                 final location = locations[index];
                                 return Card(
+                                  color: offWhite,
                                     clipBehavior: Clip.hardEdge,
                                     elevation: 3,
                                     child: ListTile(
@@ -91,7 +92,9 @@ class _HomeScreen extends State<HomeScreen> {
                                         subtitle: Text(location.description),
                                         onTap: () {
                                           _openIndividualLocationModal(location);
-                                        }));
+                                        },
+                                        trailing: Icon(Icons.arrow_forward_ios, size: 16, color: Colors.black),
+                                        ));
                               })),
                 Padding(
                     padding: const EdgeInsets.only(bottom: 40.0),

@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:quite_study_spaces_app/main.dart';
 import 'package:quite_study_spaces_app/models/location_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -44,17 +45,19 @@ class _ShowLocationState extends State<ShowLocation> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      backgroundColor: lightGray,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       title: Text(widget.location.name),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text("Details:  ${widget.location.description}"),
-          SizedBox(height: 8),
+          SizedBox(height: 10),
           Text("Address: ${widget.location.address}"),
-          SizedBox(height: 8),
+          SizedBox(height: 10),
           Text("Tags: ${widget.location.filterTags.join(', ')}"),
-          SizedBox(height: 8),
+          SizedBox(height: 10),
           Container(
             height: 100,
             child: Placeholder(),
