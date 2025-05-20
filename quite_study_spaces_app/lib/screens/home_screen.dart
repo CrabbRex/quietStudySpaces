@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:quite_study_spaces_app/main.dart';
 import 'package:quite_study_spaces_app/screens/modals/add_location.dart';
 import 'package:quite_study_spaces_app/states/locationState.dart';
 import 'package:quite_study_spaces_app/states/screen_state.dart';
@@ -31,6 +32,8 @@ class _HomeScreen extends State<HomeScreen> {
 
   void _openAddLocationModal() {
     showModalBottomSheet(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(10.0))),
+        backgroundColor: lightGray,
         isScrollControlled: true,
         context: context,
         builder: (modalContext) => NewLocation());

@@ -5,6 +5,7 @@ import 'package:quite_study_spaces_app/screens/camera.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:quite_study_spaces_app/states/locationState.dart';
 import 'package:provider/provider.dart';
+import 'package:quite_study_spaces_app/widgets/quiet_Button.dart';
 
 class NewLocation extends StatefulWidget {
   const NewLocation({super.key});
@@ -20,10 +21,11 @@ class _NewLocationState extends State<NewLocation> {
   bool isFirstChecked = false;
   bool isSecondChecked = false;
   String? _capturedImagePath;
+  bool _photoTaken = false;
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 500,
+        height: MediaQuery.of(context).copyWith().size.height * 0.75,
         padding: EdgeInsets.all(20),
         child: Column(
           children: [
@@ -39,7 +41,7 @@ class _NewLocationState extends State<NewLocation> {
                     controller: locAddressController,
                     decoration: InputDecoration(label: Text("Address")),
                   ),
-                  SizedBox(height: 20,),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.03),
                   TextFormField(
                     controller: locDescController,
                     keyboardType: TextInputType.multiline,
@@ -51,6 +53,7 @@ class _NewLocationState extends State<NewLocation> {
                       ),
                     ),
                   ),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.03),
                   CheckboxListTile(
                     value: isFirstChecked,
                     onChanged: (bool? value) {
@@ -69,32 +72,40 @@ class _NewLocationState extends State<NewLocation> {
                     },
                     title: const Text("View"),
                   ),
-                  ElevatedButton(
-                    onPressed: () async {
-                      final cameras = await availableCameras();
-                      //Use Navigator.push to open camera
-                      //Image returned goes into imageFile var
-                      final imagePath = await Navigator.push(//Nav Push pushes this screen onto the navigation stack.
-                        context,
-                        MaterialPageRoute(
-                          //A modal route that replaces the entire screen
-                          builder: (context) => takePhotoScreen(camera: cameras.first),
-                        ),
-                      );
-                      //Stub implementation:
-                      if (imagePath != null) {
-                        setState(() {
-                          _capturedImagePath = imagePath;
-                        });
-                      }
-                      print(_capturedImagePath.toString());
-                    },
-                    child: Text("Add Photos")
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      OutlinedButton(
+                        onPressed: () async {
+                          final cameras = await availableCameras();
+                          //Use Navigator.push to open camera
+                          //Image returned goes into imageFile var
+                          final imagePath = await Navigator.push(//Nav Push pushes this screen onto the navigation stack.
+                            context,
+                            MaterialPageRoute(
+                              //A modal route that replaces the entire screen
+                              builder: (context) => takePhotoScreen(camera: cameras.first),
+                            ),
+                          );
+                          //Stub implementation:
+                          if (imagePath != null) {
+                            setState(() {
+                              _capturedImagePath = imagePath;
+                              _photoTaken = true;
+                            });
+                          }
+                          print(_capturedImagePath.toString());
+                        },
+                        child: Text("Add Photos")
+                      ),
+                      if(_photoTaken) Icon(Icons.check_box),
+                    ],
                   ),
                 ],
               ),
             ),
-            ElevatedButton(
+            quietButton(
               onPressed: () {
                 List<String> tags = [];
                 if (isFirstChecked) tags.add("Cafe");
@@ -112,8 +123,12 @@ class _NewLocationState extends State<NewLocation> {
                 Navigator.pop(context);
 
               },
-              child: Text("Add Location"),
+              label: "Add Location",
             ),
+            TextButton(
+              onPressed: () => Navigator.pop(context), 
+              child: Text("Cancel"),
+            )
           ],
         ));
   }
