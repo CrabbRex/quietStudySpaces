@@ -110,8 +110,7 @@ class _LoginScreen extends State<LoginScreen> {
                   onPressed: state.goToSignUp,
                   child: Text("Sign Up"),
                 ),
-                ElevatedButton(
-                    onPressed: state.goToHomeScreen, child: Text("Test")),
+                
               ],
             ));
           }),
