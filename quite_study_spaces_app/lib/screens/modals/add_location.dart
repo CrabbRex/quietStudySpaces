@@ -1,4 +1,5 @@
 import 'package:camera/camera.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -34,7 +35,7 @@ class _NewLocationState extends State<NewLocation> {
     return status.isGranted;
   }
 
-  void _saveLocation() {
+  void _saveLocation() async {
     if(locNameController.text.trim().isEmpty || locAddressController.text.trim().isEmpty
         || locDescController.text.trim().isEmpty) {
           showDialog(
@@ -61,9 +62,27 @@ class _NewLocationState extends State<NewLocation> {
       "filterTags" : tags,
       "photoURL" : _capturedImagePath ?? "",
     };
-    FirebaseFirestore.instance.collection("Locations").add(location);
-    Provider.of<Locationstate>(context, listen: false).getLocationsFromDB();
-    Navigator.pop(context);
+
+    try{
+      //Add location to database and get reference
+      final docRef = await FirebaseFirestore.instance.collection('Locations').add(location);
+      final locationId = docRef.id;
+
+      final user = FirebaseAuth.instance.currentUser;
+      if(user != null){ 
+        await FirebaseFirestore.instance.collection('users').doc(user.uid).update({
+          'userAdded': FieldValue.arrayUnion([locationId])
+        });
+      }
+
+      Provider.of<Locationstate>(context, listen: false).getLocationsFromDB();
+      Navigator.pop(context);
+    } catch (e) {
+      print("Error saving location: $e");
+    }
+
+    
+    
   }
 
   @override

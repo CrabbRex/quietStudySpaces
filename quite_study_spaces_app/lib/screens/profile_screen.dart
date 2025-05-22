@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:quite_study_spaces_app/main.dart';
+import 'package:quite_study_spaces_app/screens/modals/delete_locations.dart';
 import 'package:quite_study_spaces_app/states/screen_state.dart';
 import 'package:quite_study_spaces_app/states/user_profile_state.dart';
 import 'package:quite_study_spaces_app/widgets/background.dart';
@@ -14,6 +16,16 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+
+  void _openDeleteLocations() {
+    showModalBottomSheet(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(10.0))),
+        backgroundColor: lightGray,
+        isScrollControlled: true,
+        context: context,
+        builder: (modalContext) => DeleteLocations());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Consumer2<UserProfileState, ScreenState>(
@@ -30,8 +42,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   quietButton(
-                    onPressed: Placeholder.new,
-                    label: "Manage Account",
+                    onPressed: _openDeleteLocations,
+                    label: "Manage Your Locations",
                   ),
                   SizedBox(height: 16,),
                   quietButton(

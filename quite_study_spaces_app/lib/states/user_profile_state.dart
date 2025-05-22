@@ -56,4 +56,11 @@ class UserProfileState extends ChangeNotifier{
       print("Error fetching values: $e");
     }
   }
+
+  Future<void> addLocationToUser(String userId, String locationId) async {
+    final userDoc = FirebaseFirestore.instance.collection('users').doc(userId);
+    await userDoc.update({
+      'userAdded': FieldValue.arrayUnion([locationId])
+    });
+  }
 }
