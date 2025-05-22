@@ -23,7 +23,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
         backgroundColor: lightGray,
         isScrollControlled: true,
         context: context,
-        builder: (modalContext) => DeleteLocations());
+        builder: (modalContext) => SizedBox(
+          height: MediaQuery.of(context).size.height,
+          child: DeleteLocations(),
+        ));
   }
 
   @override
