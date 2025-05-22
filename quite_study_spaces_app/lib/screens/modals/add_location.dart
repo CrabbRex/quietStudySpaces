@@ -1,11 +1,14 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:quite_study_spaces_app/screens/camera.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:quite_study_spaces_app/states/locationState.dart';
 import 'package:provider/provider.dart';
 import 'package:quite_study_spaces_app/widgets/quiet_Button.dart';
+
+
 
 class NewLocation extends StatefulWidget {
   const NewLocation({super.key});
@@ -22,6 +25,14 @@ class _NewLocationState extends State<NewLocation> {
   bool isSecondChecked = false;
   String? _capturedImagePath;
   bool _photoTaken = false;
+
+  Future<bool> _requestCameraPermission() async {
+    var status = await Permission.camera.status;
+    if(!status.isGranted) {
+      status = await Permission.camera.request();
+    }
+    return status.isGranted;
+  }
 
   void _saveLocation() {
     if(locNameController.text.trim().isEmpty || locAddressController.text.trim().isEmpty
@@ -48,7 +59,7 @@ class _NewLocationState extends State<NewLocation> {
       "Address" : locAddressController.text,
       "description" : locDescController.text,
       "filterTags" : tags,
-      "photoURL" : _capturedImagePath != null ? "placeholder" : "placeholder",
+      "photoURL" : _capturedImagePath ?? "",
     };
     FirebaseFirestore.instance.collection("Locations").add(location);
     Provider.of<Locationstate>(context, listen: false).getLocationsFromDB();
@@ -111,24 +122,27 @@ class _NewLocationState extends State<NewLocation> {
                     children: [
                       OutlinedButton(
                         onPressed: () async {
-                          final cameras = await availableCameras();
-                          //Use Navigator.push to open camera
-                          //Image returned goes into imageFile var
-                          final imagePath = await Navigator.push(//Nav Push pushes this screen onto the navigation stack.
-                            context,
-                            MaterialPageRoute(
-                              //A modal route that replaces the entire screen
-                              builder: (context) => takePhotoScreen(camera: cameras.first),
-                            ),
-                          );
-                          //Stub implementation:
-                          if (imagePath != null) {
-                            setState(() {
-                              _capturedImagePath = imagePath;
-                              _photoTaken = true;
-                            });
+                          bool granted = await _requestCameraPermission();
+                          if(granted) {
+                            final cameras = await availableCameras();
+                            //Use Navigator.push to open camera
+                            //Image returned goes into imageFile var
+                            final imagePath = await Navigator.push(//Nav Push pushes this screen onto the navigation stack.
+                              context,
+                              MaterialPageRoute(
+                                //A modal route that replaces the entire screen
+                                builder: (context) => takePhotoScreen(camera: cameras.first),
+                              ),
+                            );
+
+                            //Stub implementation:
+                            if (imagePath != null) {
+                              setState(() {
+                                _capturedImagePath = imagePath;
+                                _photoTaken = true;
+                              });
+                            }
                           }
-                          print(_capturedImagePath.toString());
                         },
                         child: Text("Add Photos")
                       ),

@@ -1,13 +1,11 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'dart:io';
-import 'package:path/path.dart';
-import 'package:path_provider/path_provider.dart';
+import 'package:path/path.dart' as path;
 
 class takePhotoScreen extends StatefulWidget {
-  const takePhotoScreen({super.key, required this.camera});
+    final CameraDescription camera;
 
-  final CameraDescription camera;
+    const takePhotoScreen({super.key, required this.camera});
 
   @override
   State<takePhotoScreen> createState() => _takePhotoScreenState();
@@ -33,34 +31,46 @@ class _takePhotoScreenState extends State<takePhotoScreen> {
     super.dispose();
   }
 
+  Future<void> _takePicture() async {
+    try {
+      await _initialiseControllerFuture;
+      final image = await _controller.takePicture();
+      Navigator.pop(context, image.path);
+    } catch (e) {
+      print(e);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(title: Text("Take a Photo")),
       body: FutureBuilder<void>(
         future: _initialiseControllerFuture,
-        builder: (context, snapshot){
+        builder: (BuildContext context, AsyncSnapshot<void> snapshot){
           if(snapshot.connectionState == ConnectionState.done){
-            return CameraPreview(_controller);
+            return Stack(
+              children: [
+                CameraPreview(_controller),
+                Positioned(
+                  bottom: 50,
+                  left: 0,
+                  right: 0,                                
+                  child: Center(
+                    child: FloatingActionButton(
+                      backgroundColor: Colors.white,
+                      child: Icon(Icons.camera_alt, color: Colors.black,),
+                      onPressed: _takePicture,
+                      ),
+                  ),)
+              ],
+            );
           } else {
             return const Center(child: CircularProgressIndicator());
           }
         },
       ),
-      floatingActionButton: FloatingActionButton(
-              onPressed: () async {
-                try {
-                  await _initialiseControllerFuture;
-                  final _image = await _controller.takePicture();
-                  Navigator.pop(context, _image.path);
-
-                } catch (e) {
-                  print("Error taking photo");
-                }
-              },
-              child: Icon(Icons.camera_alt),
-            ),
-          floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       );
   }
 }

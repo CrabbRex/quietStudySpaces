@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -59,8 +60,14 @@ class _ShowLocationState extends State<ShowLocation> {
           Text("Tags: ${widget.location.filterTags.join(', ')}"),
           SizedBox(height: 10),
           Container(
-            height: 100,
-            child: Placeholder(),
+            height: 150,
+            width: double.infinity,
+            child: widget.location.photoURL.isNotEmpty
+              ? Image.file(
+                File(widget.location.photoURL),
+                fit: BoxFit.cover,
+                )
+              : Center(child: Text("No Image")),
           ),
           SizedBox(height: 8),
           Center(

@@ -27,7 +27,10 @@ class _HomeScreen extends State<HomeScreen> {
     super.initState();
     //Calling the Locationstate function to update the state with all the
     //locations in the database.
-    Provider.of<Locationstate>(context, listen: false).getLocationsFromDB();
+    Future.delayed(Duration.zero, () {
+      Provider.of<Locationstate>(context, listen: false).getLocationsFromDB();
+    });
+    
   }
 
   void _openAddLocationModal() {
