@@ -97,7 +97,7 @@ class _NewLocationState extends State<NewLocation> {
                       ),
                     ),
                   ),
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.01),
                   CheckboxListTile(
                     value: isFirstChecked,
                     onChanged: (bool? value) {
@@ -116,7 +116,7 @@ class _NewLocationState extends State<NewLocation> {
                     },
                     title: const Text("View"),
                   ),
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.02),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
