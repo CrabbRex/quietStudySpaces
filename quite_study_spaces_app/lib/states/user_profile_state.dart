@@ -103,7 +103,23 @@ class UserProfileState extends ChangeNotifier{
     } catch (e){
     print("Error loading user added locations: $e");
   }
-    
   }
   
+  Future<void> deleteUserAddedLocation(String locationId) async {
+    final user = FirebaseAuth.instance.currentUser;
+    if(user==null) return;
+
+    try {
+      await FirebaseFirestore.instance.collection('users').doc(user.uid).update({
+        'userAdded': FieldValue.arrayRemove([locationId])
+      });
+
+      await FirebaseFirestore.instance.collection('Locations').doc(locationId).delete();
+
+      _userAdded.removeWhere((loc) => loc.id == locationId);
+      notifyListeners();
+    }catch (e) {
+      print("Error deleteing user added location $e");
+    }
+  }
 }

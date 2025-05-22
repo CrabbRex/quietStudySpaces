@@ -78,7 +78,9 @@ class _DeleteLocationsState extends State<DeleteLocations> {
                             Padding(
                               padding: const EdgeInsets.only(right: 8.0),
                               child: ElevatedButton(
-                                onPressed: Placeholder.new, 
+                                onPressed: () async{
+                                  await Provider.of<UserProfileState>(context, listen: false).deleteUserAddedLocation(loc.id);
+                                }, 
                                 style: ElevatedButton.styleFrom(
                                   padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
                                   backgroundColor: darkgreen,
