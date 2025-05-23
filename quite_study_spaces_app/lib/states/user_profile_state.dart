@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:quite_study_spaces_app/models/location_model.dart';
@@ -6,7 +8,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class UserProfileState extends ChangeNotifier{
   final List<Location> _favouriteLocations = [];
   String? _email;
-  List<Location> _userAdded = [];
+  final List<Location> _userAdded = [];
 
   List<Location> get favouriteLocations => _favouriteLocations;
   String? get email => _email;
@@ -110,6 +112,16 @@ class UserProfileState extends ChangeNotifier{
     if(user==null) return;
 
     try {
+      final locationDoc = await FirebaseFirestore.instance.collection('Locations').doc(locationId).get();
+      if(locationDoc.exists){
+        final data = locationDoc.data();
+        final photoURL = data?['photoURL'] ?? '';
+          final file = File(photoURL);
+          if(await file.exists()) {
+            await file.delete();
+            print("Local image deleted: $photoURL");
+          }
+      }
       await FirebaseFirestore.instance.collection('users').doc(user.uid).update({
         'userAdded': FieldValue.arrayRemove([locationId])
       });

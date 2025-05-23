@@ -49,10 +49,15 @@ class _takePhotoScreenState extends State<takePhotoScreen> {
       body: FutureBuilder<void>(
         future: _initialiseControllerFuture,
         builder: (BuildContext context, AsyncSnapshot<void> snapshot){
-          if(snapshot.connectionState == ConnectionState.done){
+          if(snapshot.connectionState == ConnectionState.done && _controller.value.isInitialized){
             return Stack(
               children: [
-                CameraPreview(_controller),
+                  Center(
+                    child: AspectRatio(
+                      aspectRatio: 3/4,
+                      child: CameraPreview(_controller)
+                    ),
+                  ),
                 Positioned(
                   bottom: 50,
                   left: 0,
