@@ -1,3 +1,4 @@
+import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
@@ -60,20 +61,20 @@ void main() {
     );
 
     final mockAuth = MockFirebaseAuth(mockUser: mockUser);
-
     final authService = AuthService(mockFirebaseAuth);
+    final fakeFirestore = FakeFirebaseFirestore();
 
     await tester.pumpWidget(
-  MultiProvider(
-    providers: [
-      ChangeNotifierProvider(create: (_) => ScreenState()),
-      ChangeNotifierProvider(create: (_) => Locationstate()),
-      ChangeNotifierProvider(create: (_) => UserProfileState(auth: mockAuth)),
-      Provider<AuthService>.value(value: authService),
-    ],
-    child: MaterialApp(home: CurrentScreen()),
-  ),
-);
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => ScreenState()),
+          ChangeNotifierProvider(create: (_) => Locationstate(fakeFirestore)),
+          ChangeNotifierProvider(create: (_) => UserProfileState(auth: mockAuth)),
+          Provider<AuthService>.value(value: authService),
+        ],
+        child: MaterialApp(home: CurrentScreen()),
+      ),
+    );
 
     final emailField = find.widgetWithText(TextFormField, 'Email');
     final passwordField = find.widgetWithText(TextFormField, 'Password');
