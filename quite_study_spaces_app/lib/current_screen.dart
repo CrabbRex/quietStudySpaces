@@ -1,8 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quite_study_spaces_app/screens/home_screen.dart';
 import 'package:quite_study_spaces_app/screens/login_screen.dart';
 import 'package:quite_study_spaces_app/screens/signup_screen.dart';
+import 'package:quite_study_spaces_app/services/auth_service.dart';
 import 'package:quite_study_spaces_app/widgets/nav_bar.dart';
 import 'states/screen_state.dart';
 
@@ -16,11 +18,11 @@ class CurrentScreen extends StatelessWidget {
           return Container(
             color: const Color(0xffF2D3AC),
             child: switch(state.screenStatus) {
-              "login" => LoginScreen(),
-              "signUp" => SignupScreen(),
+              "login" => LoginScreen(authService: AuthService(FirebaseAuth.instance)),
+              "signUp" => SignupScreen(authService: AuthService(FirebaseAuth.instance),),
               //homescreen runs through navbar wrapper.
               "homeScreen" => const navBar(),
-              _ => const LoginScreen(),
+              _ => LoginScreen(authService: AuthService(FirebaseAuth.instance)),
             }
           );
         }

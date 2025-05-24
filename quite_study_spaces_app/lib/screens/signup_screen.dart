@@ -6,7 +6,9 @@ import 'package:quite_study_spaces_app/states/screen_state.dart';
 import 'package:quite_study_spaces_app/widgets/background.dart';
 
 class SignupScreen extends StatefulWidget {
-  const SignupScreen({super.key});
+  final AuthService authService;
+
+  const SignupScreen({super.key, required this.authService});
 
   @override
   State<SignupScreen> createState() {
@@ -79,8 +81,7 @@ class _SignupScreen extends State<SignupScreen> {
                       ));
                     }
 
-                    final authService = AuthService();
-                    final result = await authService.signUp(
+                    final result = await widget.authService.signUp(
                       email: _emailController.text,
                       password: _passwordController.text,
                     );

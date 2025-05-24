@@ -1,8 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
 import 'package:quite_study_spaces_app/screens/login_screen.dart';
 import 'package:quite_study_spaces_app/screens/signup_screen.dart';
+import 'package:quite_study_spaces_app/services/auth_service.dart';
 import 'package:quite_study_spaces_app/states/screen_state.dart';
 
 void main() {
@@ -10,8 +12,8 @@ void main() {
     await tester.pumpWidget(
       ChangeNotifierProvider(
         create: (_) => ScreenState(),
-        child: const MaterialApp(
-          home: LoginScreen(),
+        child: MaterialApp(
+          home: LoginScreen(authService: AuthService(FirebaseAuth.instance)),
         ),
       ),
     );
@@ -31,8 +33,8 @@ void main() {
     await tester.pumpWidget(
       ChangeNotifierProvider(
         create: (_) => ScreenState(),
-        child: const MaterialApp(
-          home: LoginScreen(),
+        child: MaterialApp(
+          home: LoginScreen(authService: AuthService(FirebaseAuth.instance)),
         ),
       ),
     );
@@ -47,8 +49,8 @@ void main() {
     await tester.pumpWidget(
       ChangeNotifierProvider(
         create: (_) => ScreenState(),
-        child: const MaterialApp(
-          home: SignupScreen(),
+        child: MaterialApp(
+          home: SignupScreen(authService: AuthService(FirebaseAuth.instance)),
         ),
       ),
     );

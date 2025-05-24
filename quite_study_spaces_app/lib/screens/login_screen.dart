@@ -9,7 +9,9 @@ import 'package:quite_study_spaces_app/widgets/background.dart';
 import 'package:quite_study_spaces_app/widgets/quiet_Button.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+  final AuthService authService;
+
+  const LoginScreen({super.key, required this.authService});
 
   @override
   State<LoginScreen> createState() {
@@ -81,17 +83,14 @@ class _LoginScreen extends State<LoginScreen> {
                       );
                     }
 
-                    final authService = AuthService();
-                    final result = await authService.logIn(
+                    
+                    final result = await widget.authService.logIn(
                       email: _emailController.text,
                       password: _passwordController.text,
                     );
 
                     if (result == 'Sucess') {
-                      final FirebaseUser = FirebaseAuth.instance.currentUser;
-                      if (FirebaseUser != null) {
-                        await createUserProfile(FirebaseUser);
-                      }
+                      
                       state.goToHomeScreen();
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(
