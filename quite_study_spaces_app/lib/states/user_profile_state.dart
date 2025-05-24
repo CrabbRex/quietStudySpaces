@@ -6,6 +6,8 @@ import 'package:quite_study_spaces_app/models/location_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class UserProfileState extends ChangeNotifier{
+  final FirebaseAuth auth;
+  UserProfileState({required this.auth});
   final List<Location> _favouriteLocations = [];
   String? _email;
   final List<Location> _userAdded = [];
@@ -17,7 +19,7 @@ class UserProfileState extends ChangeNotifier{
 
   Future<void> loaduserFavourites() async {
     //get instance of current user
-    final user = FirebaseAuth.instance.currentUser;
+    final user = auth.currentUser;
     if (user==null) return;
 
     try {
@@ -69,7 +71,7 @@ class UserProfileState extends ChangeNotifier{
   }
 
   Future<void> loadUserAdded() async{
-    final user = FirebaseAuth.instance.currentUser;
+    final user = auth.currentUser;
     if (user==null) return;
 
     try {
@@ -108,7 +110,7 @@ class UserProfileState extends ChangeNotifier{
   }
   
   Future<void> deleteUserAddedLocation(String locationId) async {
-    final user = FirebaseAuth.instance.currentUser;
+    final user = auth.currentUser;
     if(user==null) return;
 
     try {

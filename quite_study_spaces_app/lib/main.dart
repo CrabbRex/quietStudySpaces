@@ -37,7 +37,7 @@ void main() async {
         ),
         ChangeNotifierProvider(create: (context) => ScreenState()),
         ChangeNotifierProvider(create: (context) => Locationstate(FirebaseFirestore.instance)),
-        ChangeNotifierProvider(create: (context) => UserProfileState()),
+        ChangeNotifierProvider(create: (context) => UserProfileState(auth: FirebaseAuth.instance)),
         
       ],
       child: MaterialApp(

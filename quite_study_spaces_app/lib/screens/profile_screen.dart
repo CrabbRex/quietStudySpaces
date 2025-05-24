@@ -40,38 +40,40 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
           body: Stack(children: [
             const backgroundWidget(),
-            Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  quietButton(
-                    onPressed: _openDeleteLocations,
-                    label: "Manage Your Locations",
-                  ),
-                  SizedBox(height: 16,),
-                  quietButton(
-                    onPressed: Placeholder.new,
-                    label: "Manage Account",
-                  ),
-                  SizedBox(height: 16,),
-                  quietButton(
-                    onPressed: Placeholder.new,
-                    label: "Change Email",
-                  ),
-                  SizedBox(height: 16,),
-                  quietButton(
-                    onPressed: Placeholder.new,
-                    label: "Delete Account",
-                  ),
-                  SizedBox(height: 16,),
-                  quietButton(
-                    onPressed: () async {
-                      await FirebaseAuth.instance.signOut();
-                      screenState.logOut();
-                    },
-                    label: "Sign Out",
-                  ),
-                ],
+            SingleChildScrollView(
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    quietButton(
+                      onPressed: _openDeleteLocations,
+                      label: "Manage Your Locations",
+                    ),
+                    SizedBox(height: 16,),
+                    quietButton(
+                      onPressed: Placeholder.new,
+                      label: "Manage Account",
+                    ),
+                    SizedBox(height: 16,),
+                    quietButton(
+                      onPressed: Placeholder.new,
+                      label: "Change Email",
+                    ),
+                    SizedBox(height: 16,),
+                    quietButton(
+                      onPressed: Placeholder.new,
+                      label: "Delete Account",
+                    ),
+                    SizedBox(height: 16,),
+                    quietButton(
+                      onPressed: () async {
+                        await FirebaseAuth.instance.signOut();
+                        screenState.logOut();
+                      },
+                      label: "Sign Out",
+                    ),
+                  ],
+                ),
               ),
             ),
           ]));

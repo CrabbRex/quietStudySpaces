@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
 import 'package:quite_study_spaces_app/screens/home_screen.dart';
+import 'package:quite_study_spaces_app/services/auth_service.dart';
 import 'package:quite_study_spaces_app/states/locationState.dart';
 import 'package:quite_study_spaces_app/states/screen_state.dart';
 
@@ -35,6 +36,7 @@ void main() {
         ChangeNotifierProvider(create: (_) => ScreenState()),
         ChangeNotifierProvider<Locationstate>.value(value: locationsState),
         Provider<FirebaseAuth>.value(value: mockAuth),
+        Provider<AuthService>.value(value: AuthService(mockAuth)),
       ],
       child: MaterialApp(
         home: HomeScreen(),
