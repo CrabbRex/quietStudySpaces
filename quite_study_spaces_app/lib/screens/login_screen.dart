@@ -1,12 +1,9 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quite_study_spaces_app/main.dart';
 import 'package:quite_study_spaces_app/services/auth_service.dart';
 import 'package:quite_study_spaces_app/states/screen_state.dart';
-import 'package:quite_study_spaces_app/services/profile_service.dart';
 import 'package:quite_study_spaces_app/widgets/background.dart';
-import 'package:quite_study_spaces_app/widgets/quiet_Button.dart';
 
 class LoginScreen extends StatefulWidget {
   //final AuthService authService;

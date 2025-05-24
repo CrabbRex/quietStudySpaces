@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quite_study_spaces_app/main.dart';
 import 'package:quite_study_spaces_app/states/user_profile_state.dart';
-import 'package:quite_study_spaces_app/widgets/background.dart';
 
 class DeleteLocations extends StatefulWidget {
   const DeleteLocations({super.key});

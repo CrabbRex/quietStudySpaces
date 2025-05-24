@@ -1,17 +1,16 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:path/path.dart' as path;
 
-class takePhotoScreen extends StatefulWidget {
+class TakePhotoScreen extends StatefulWidget {
     final CameraDescription camera;
 
-    const takePhotoScreen({super.key, required this.camera});
+    const TakePhotoScreen({super.key, required this.camera});
 
   @override
-  State<takePhotoScreen> createState() => _takePhotoScreenState();
+  State<TakePhotoScreen> createState() => _TakePhotoScreenState();
 }
 
-class _takePhotoScreenState extends State<takePhotoScreen> {
+class _TakePhotoScreenState extends State<TakePhotoScreen> {
   late CameraController _controller;
   late Future<void> _initialiseControllerFuture;
 

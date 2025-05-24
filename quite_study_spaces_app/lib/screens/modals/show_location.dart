@@ -1,11 +1,8 @@
 import 'dart:io';
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quite_study_spaces_app/main.dart';
 import 'package:quite_study_spaces_app/models/location_model.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:quite_study_spaces_app/services/auth_service.dart';
 
@@ -33,7 +30,7 @@ class _ShowLocationState extends State<ShowLocation> {
     if (user == null) return;
 
 
-    final snapshot = await FirebaseFirestore.instance.collection('users').doc(user!.uid).get();
+    final snapshot = await FirebaseFirestore.instance.collection('users').doc(user.uid).get();
 
     if(snapshot.exists) {
       final data = snapshot.data();
@@ -41,7 +38,7 @@ class _ShowLocationState extends State<ShowLocation> {
         List<dynamic> favs = data['favourites'];
         setState(() {
           isFavorite = favs.contains(widget.location.id);
-          print(favs.toString());
+          
         });
       }
     }
@@ -85,7 +82,7 @@ class _ShowLocationState extends State<ShowLocation> {
                 setState(() {
                   isFavorite = !isFavorite;
                 });
-                final userDoc = FirebaseFirestore.instance.collection('users').doc(user!.uid);
+                final userDoc = FirebaseFirestore.instance.collection('users').doc(user.uid);
                 if(isFavorite)  {
                   await userDoc.update({
                     'favourites' : FieldValue.arrayUnion([widget.location.id]),

@@ -1,10 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:quite_study_spaces_app/screens/home_screen.dart';
 import 'package:quite_study_spaces_app/screens/login_screen.dart';
 import 'package:quite_study_spaces_app/screens/signup_screen.dart';
-import 'package:quite_study_spaces_app/services/auth_service.dart';
 import 'package:quite_study_spaces_app/widgets/nav_bar.dart';
 import 'states/screen_state.dart';
 

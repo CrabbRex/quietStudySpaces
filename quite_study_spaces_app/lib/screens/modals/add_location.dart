@@ -1,7 +1,6 @@
 import 'package:camera/camera.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:camera/camera.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:quite_study_spaces_app/screens/camera.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -150,7 +149,7 @@ class _NewLocationState extends State<NewLocation> {
                               context,
                               MaterialPageRoute(
                                 //A modal route that replaces the entire screen
-                                builder: (context) => takePhotoScreen(camera: cameras.first),
+                                builder: (context) => TakePhotoScreen(camera: cameras.first),
                               ),
                             );
 

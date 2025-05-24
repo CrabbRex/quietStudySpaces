@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
-import 'package:quite_study_spaces_app/main.dart';
 import 'package:quite_study_spaces_app/states/user_profile_state.dart';
 import 'package:quite_study_spaces_app/widgets/background.dart';
 

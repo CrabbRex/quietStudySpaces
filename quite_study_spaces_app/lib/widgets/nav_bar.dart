@@ -4,7 +4,6 @@ import 'package:quite_study_spaces_app/screens/favourites_screen.dart';
 import 'package:quite_study_spaces_app/screens/home_screen.dart';
 import 'package:quite_study_spaces_app/screens/profile_screen.dart';
 import 'package:quite_study_spaces_app/states/screen_state.dart';
-import 'package:quite_study_spaces_app/states/screen_state.dart';
 
 class navBar extends StatelessWidget {
   const navBar({super.key});
