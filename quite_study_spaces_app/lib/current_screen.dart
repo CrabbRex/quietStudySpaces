@@ -18,11 +18,11 @@ class CurrentScreen extends StatelessWidget {
           return Container(
             color: const Color(0xffF2D3AC),
             child: switch(state.screenStatus) {
-              "login" => LoginScreen(authService: AuthService(FirebaseAuth.instance)),
-              "signUp" => SignupScreen(authService: AuthService(FirebaseAuth.instance),),
+              "login" => LoginScreen(),
+              "signUp" => SignupScreen(),
               //homescreen runs through navbar wrapper.
               "homeScreen" => const navBar(),
-              _ => LoginScreen(authService: AuthService(FirebaseAuth.instance)),
+              _ => LoginScreen(),
             }
           );
         }

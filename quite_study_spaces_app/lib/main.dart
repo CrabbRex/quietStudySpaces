@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quite_study_spaces_app/current_screen.dart';
 import 'package:quite_study_spaces_app/screens/favourites_screen.dart';
+import 'package:quite_study_spaces_app/services/auth_service.dart';
 import 'package:quite_study_spaces_app/states/locationState.dart';
 import 'package:quite_study_spaces_app/states/screen_state.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -30,9 +32,13 @@ void main() async {
   runApp(
     MultiProvider(
       providers: [
+        Provider<AuthService>(
+          create: (_) => AuthService(FirebaseAuth.instance),
+        ),
         ChangeNotifierProvider(create: (context) => ScreenState()),
         ChangeNotifierProvider(create: (context) => Locationstate()),
         ChangeNotifierProvider(create: (context) => UserProfileState()),
+        
       ],
       child: MaterialApp(
         title: 'Quiet Study Spaces',

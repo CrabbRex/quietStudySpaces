@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth_mocks/firebase_auth_mocks.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
@@ -13,7 +14,7 @@ void main() {
       ChangeNotifierProvider(
         create: (_) => ScreenState(),
         child: MaterialApp(
-          home: LoginScreen(authService: AuthService(FirebaseAuth.instance)),
+          home: LoginScreen(),
         ),
       ),
     );
@@ -30,11 +31,16 @@ void main() {
   });
 
   testWidgets('Shows error message on empty input', (WidgetTester tester) async {
+    final mockFirebaseAuth = MockFirebaseAuth();
+    final authService = AuthService(mockFirebaseAuth);
     await tester.pumpWidget(
-      ChangeNotifierProvider(
-        create: (_) => ScreenState(),
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => ScreenState()),
+          Provider<AuthService>.value(value: authService),
+        ],
         child: MaterialApp(
-          home: LoginScreen(authService: AuthService(FirebaseAuth.instance)),
+          home: LoginScreen(),
         ),
       ),
     );
@@ -46,12 +52,17 @@ void main() {
   });
 
   testWidgets('Testing SignUp Screen Widgets', (WidgetTester tester) async {
+    final mockFirebaseAuth = MockFirebaseAuth();
+    final authService = AuthService(mockFirebaseAuth);
     await tester.pumpWidget(
-      ChangeNotifierProvider(
-        create: (_) => ScreenState(),
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => ScreenState()),
+          Provider<AuthService>.value(value: authService),
+        ],
         child: MaterialApp(
-          home: SignupScreen(authService: AuthService(FirebaseAuth.instance)),
-        ),
+          home: SignupScreen(),
+        )
       ),
     );
 

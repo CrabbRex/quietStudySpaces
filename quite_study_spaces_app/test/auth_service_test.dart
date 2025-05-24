@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
+import 'package:quite_study_spaces_app/current_screen.dart';
+import 'package:quite_study_spaces_app/screens/home_screen.dart';
 import 'package:quite_study_spaces_app/screens/login_screen.dart';
 import 'package:quite_study_spaces_app/services/auth_service.dart';
 import 'package:firebase_auth_mocks/firebase_auth_mocks.dart';
+import 'package:quite_study_spaces_app/states/locationState.dart';
 import 'package:quite_study_spaces_app/states/screen_state.dart';
+import 'package:quite_study_spaces_app/states/user_profile_state.dart';
+import 'package:quite_study_spaces_app/widgets/nav_bar.dart';
 
 void main() {
   test('LogIn returns Sucess for valid credentials', () async {
@@ -60,13 +65,16 @@ void main() {
     final authService = AuthService(mockFirebaseAuth);
 
     await tester.pumpWidget(
-      ChangeNotifierProvider(
-        create: (_) => ScreenState(),
-        child: MaterialApp(
-          home: LoginScreen(authService: authService)
-        ),
-      )
-    );
+  MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (_) => ScreenState()),
+      ChangeNotifierProvider(create: (_) => Locationstate()),
+      ChangeNotifierProvider(create: (_) => UserProfileState()),
+      Provider<AuthService>.value(value: authService),
+    ],
+    child: MaterialApp(home: CurrentScreen()),
+  ),
+);
 
     final emailField = find.widgetWithText(TextFormField, 'Email');
     final passwordField = find.widgetWithText(TextFormField, 'Password');
@@ -79,10 +87,8 @@ void main() {
 
     expect(mockFirebaseAuth.currentUser?.email, equals(email));
 
-    /*
-    TODO:
-    Check page screen has changed.
-    can use await tester.pumpAndSettle();
-     */
+    //Test is screen has changed after login.
+    await tester.pumpAndSettle();
+    expect(find.text('Add Location'), findsOneWidget);
   });
 }

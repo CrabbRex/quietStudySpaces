@@ -9,9 +9,9 @@ import 'package:quite_study_spaces_app/widgets/background.dart';
 import 'package:quite_study_spaces_app/widgets/quiet_Button.dart';
 
 class LoginScreen extends StatefulWidget {
-  final AuthService authService;
+  //final AuthService authService;
 
-  const LoginScreen({super.key, required this.authService});
+  const LoginScreen({super.key});
 
   @override
   State<LoginScreen> createState() {
@@ -83,8 +83,8 @@ class _LoginScreen extends State<LoginScreen> {
                       );
                     }
 
-                    
-                    final result = await widget.authService.logIn(
+                    final authService = Provider.of<AuthService>(context, listen: false);
+                    final result = await authService.logIn(
                       email: _emailController.text,
                       password: _passwordController.text,
                     );
