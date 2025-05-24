@@ -3,6 +3,11 @@ import 'package:quite_study_spaces_app/models/location_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Locationstate extends ChangeNotifier{
+  final FirebaseFirestore firestore;
+  Locationstate([FirebaseFirestore? firestore])
+    : firestore = firestore ?? FirebaseFirestore.instance;
+
+
   final List<Location> _userLocations = [];
   List<String> _activeFilters = [];
   bool _isLoading = false;
@@ -59,7 +64,7 @@ class Locationstate extends ChangeNotifier{
     _isLoading = true;
     notifyListeners();
     try {
-      final querySnapshot = await FirebaseFirestore.instance.collection("Locations").get();
+      final querySnapshot = await this.firestore.collection("Locations").get();
       _userLocations.clear();
 
       for(var doc in querySnapshot.docs){

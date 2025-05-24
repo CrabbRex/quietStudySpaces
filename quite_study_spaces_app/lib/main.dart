@@ -36,7 +36,7 @@ void main() async {
           create: (_) => AuthService(FirebaseAuth.instance),
         ),
         ChangeNotifierProvider(create: (context) => ScreenState()),
-        ChangeNotifierProvider(create: (context) => Locationstate()),
+        ChangeNotifierProvider(create: (context) => Locationstate(FirebaseFirestore.instance)),
         ChangeNotifierProvider(create: (context) => UserProfileState()),
         
       ],
