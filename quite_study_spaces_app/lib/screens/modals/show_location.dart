@@ -7,6 +7,7 @@ import 'package:quite_study_spaces_app/main.dart';
 import 'package:quite_study_spaces_app/models/location_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:quite_study_spaces_app/services/auth_service.dart';
 
 
 class ShowLocation extends StatefulWidget {
@@ -27,9 +28,10 @@ class _ShowLocationState extends State<ShowLocation> {
   }
 
   Future<void> _loadUserFavourites() async {
-    final auth = Provider.of<FirebaseAuth>(context, listen: false);
-    final user = auth.currentUser;
+    final authService = Provider.of<AuthService>(context, listen: false);
+    final user = authService.auth.currentUser;
     if (user == null) return;
+
 
     final snapshot = await FirebaseFirestore.instance.collection('users').doc(user!.uid).get();
 
@@ -77,8 +79,8 @@ class _ShowLocationState extends State<ShowLocation> {
               onPressed: () async {
                 //Similar to Auth Service, get Auth from widget tree not from Firebase
                 //Allow better testing.
-                final auth = Provider.of<FirebaseAuth>(context, listen: false);
-                final user = auth.currentUser;
+                final authService = Provider.of<AuthService>(context, listen: false);
+                final user = authService.auth.currentUser;
                 if (user == null) return;
                 setState(() {
                   isFavorite = !isFavorite;
