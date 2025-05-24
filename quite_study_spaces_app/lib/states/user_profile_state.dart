@@ -119,9 +119,11 @@ class UserProfileState extends ChangeNotifier{
         final data = locationDoc.data();
         final photoURL = data?['photoURL'] ?? '';
           final file = File(photoURL);
-          if(await file.exists()) {
-            await file.delete();
-            print("Local image deleted: $photoURL");
+          if(photoURL.isNotEmpty){
+            if(await file.exists()) {
+              await file.delete();
+              print("Local image deleted: $photoURL");
+            }
           }
       }
       await FirebaseFirestore.instance.collection('users').doc(user.uid).update({
