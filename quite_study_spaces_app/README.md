@@ -1,16 +1,12 @@
 # quite_study_spaces_app
 
-A new Flutter project.
+## This is an MVP for Quiet Study Spaces app.
+## Documentation is provided throughout the code base.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Basic functionality overview:
+- Start on login / signup screen --> User Firebase Auth to get Authz
+- Open to navigation bar wrapper that has home screen, favourites screen and profile screen.
+- Ability to add / delete locations. --> Integration with Firebase Database.
+- Ability to filter locations
+- Ability to retrieve locations from database.
+- Ability to retrieve user profile from database.
