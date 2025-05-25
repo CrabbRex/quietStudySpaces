@@ -22,7 +22,7 @@ Camera Functionality:
 
 ### Changes from MVP Proposal:
 #### Change in Device Service Use:
-- Upon receiving feedback (on my App Proposal) and further reflection, the use of Maps for device capabilities was swapped out for taking photos.
+- Upon receiving feedback (on my App Proposal) and further reflection, the use of **Maps for device capabilities was swapped out for taking photos.**
 - Maps device services was pushed to a stretch goal as outlined in Room for Future Development below.
 - The Home Page is mainly affected by this, so instead of the map, the space the map would take up is taken up by Locations. These cards can be clicked and open more information about the location (including a photo).
 

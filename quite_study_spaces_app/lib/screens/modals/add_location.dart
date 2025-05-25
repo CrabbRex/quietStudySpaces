@@ -10,18 +10,24 @@
     --> Stub implementation of photo saving - saves photos locally if taken.
 
   Saves user's input in Database.
+
+  As for stub storage implementation. For future development, there is a basic
+  Firebase Storage image upload implementation commented out below.
 */
+
+import 'dart:io';
 
 import 'package:camera/camera.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:quite_study_spaces_app/screens/camera.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:quite_study_spaces_app/states/locationState.dart';
 import 'package:provider/provider.dart';
 import 'package:quite_study_spaces_app/widgets/quiet_Button.dart';
-
+// import 'package:firebase_storage/firebase_storage.dart';
 
 
 class NewLocation extends StatefulWidget {
@@ -47,6 +53,23 @@ class _NewLocationState extends State<NewLocation> {
     }
     return status.isGranted;
   }
+
+  //Stub Implementation - Basic Firebase Storage upload below (For future developemt).
+
+  // Future<void> uploadToFirebaseStorage(XFile imageFile) async {
+  //   try{
+  //     Directory appDocDir = await getApplicationDocumentsDirectory();
+  //     String filePath = '${appDocDir.path}/file-to-upload.png';
+  //     XFile file = XFile(filePath);
+
+  //     final storageRef = FirebaseStorage.instance.ref();
+  //     final fileRef = storageRef.child("user_uploads/demo_upload.png");
+
+  //     await fileRef.putFile(file);
+  //   } catch (e) {
+  //     print('Firebase upload failed');
+  //   }
+  // }
 
   void _saveLocation() async {
     if(locNameController.text.trim().isEmpty || locAddressController.text.trim().isEmpty
