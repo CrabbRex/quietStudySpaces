@@ -90,7 +90,6 @@ class Locationstate extends ChangeNotifier{
           photoURL: data['photoURL'],
         );
         _userLocations.add(location);
-        print("ADDED");
       }
       notifyListeners();
     } catch (e) {

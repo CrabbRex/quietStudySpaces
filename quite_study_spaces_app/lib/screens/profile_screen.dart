@@ -27,6 +27,21 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  bool _isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUserData();
+  }
+
+  Future<void> _loadUserData() async {
+    final userProfileState = Provider.of<UserProfileState>(context, listen: false);
+    await userProfileState.loaduserFavourites();
+    setState(() {
+      _isLoading = false;
+    });
+  }
 
   void _openDeleteLocations() {
     showModalBottomSheet(
@@ -44,9 +59,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Consumer2<UserProfileState, ScreenState>(
         builder: (context, state, screenState, child) {
+          if(_isLoading) {
+            return const Scaffold(
+              body: Center(child: CircularProgressIndicator()),
+            );
+          }
+
       return Scaffold(
           appBar: AppBar(
-            title: Text("Hello, ${state.email}"),
+            title: state.email == null
+            ? const CircularProgressIndicator()
+            : Text("Hello, ${state.email}"),
             actions: [],
           ),
           body: Stack(children: [
