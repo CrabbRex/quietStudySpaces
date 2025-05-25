@@ -69,7 +69,7 @@ void main() {
         providers: [
           ChangeNotifierProvider(create: (_) => ScreenState()),
           ChangeNotifierProvider(create: (_) => Locationstate(fakeFirestore)),
-          ChangeNotifierProvider(create: (_) => UserProfileState(auth: mockAuth)),
+          ChangeNotifierProvider(create: (_) => UserProfileState(auth: mockAuth, firestore: fakeFirestore)),
           Provider<AuthService>.value(value: authService),
         ],
         child: MaterialApp(home: CurrentScreen()),

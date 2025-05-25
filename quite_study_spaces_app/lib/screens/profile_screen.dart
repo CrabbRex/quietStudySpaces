@@ -32,16 +32,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   void initState() {
     super.initState();
-    _loadUserData();
-  }
-
-  Future<void> _loadUserData() async {
-    final userProfileState = Provider.of<UserProfileState>(context, listen: false);
-    await userProfileState.loaduserFavourites();
-    setState(() {
-      _isLoading = false;
+    Future.delayed(Duration.zero, () async{
+      final userProfileState = Provider.of<UserProfileState>(context, listen: false);
+      await userProfileState.loaduserFavourites();
+      setState(() {
+        _isLoading = false;
+      });
     });
   }
+
 
   void _openDeleteLocations() {
     showModalBottomSheet(

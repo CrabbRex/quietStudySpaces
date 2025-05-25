@@ -17,9 +17,13 @@ void main() {
       uid: 'test_user_id',
       email: 'test@example.com'
     );
-
     final mockAuth = MockFirebaseAuth(mockUser: mockUser);
     final fakeFirestore = FakeFirebaseFirestore();
+
+    await FakeFirebaseFirestore().collection('users').doc('test_user_id').set({
+      'favourites': [],
+      'userAdded': [],
+    });
 
     await tester.pumpWidget(
       MultiProvider(
@@ -27,7 +31,7 @@ void main() {
           Provider<AuthService>.value(value: AuthService(mockAuth)),
           ChangeNotifierProvider(create: (_) => ScreenState()),
           ChangeNotifierProvider(create: (_) => Locationstate(fakeFirestore)),
-          ChangeNotifierProvider(create: (_) => UserProfileState(auth: mockAuth)),
+          ChangeNotifierProvider(create: (_) => UserProfileState(auth: mockAuth, firestore: fakeFirestore)),
           Provider<FirebaseAuth>.value(value: mockAuth),
         ],
         child: MaterialApp(
@@ -49,9 +53,11 @@ void main() {
     expect(find.text('No favourite locations yet.'), findsOneWidget);
 
     await tester.tap(find.byIcon(Icons.account_circle_outlined));
-    await tester.pumpAndSettle();
+    await tester.pump();
+    await tester.pump(const Duration(seconds: 1));
+    await tester.pump(const Duration(seconds: 1));
 
-    expect(find.text('Change Email'), findsOneWidget);
+    expect(find.text('Manage Your Locations'), findsOneWidget);
 
   });
 }

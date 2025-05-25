@@ -45,7 +45,7 @@ void main() async {
         ChangeNotifierProvider(create: (context) => Locationstate(FirebaseFirestore.instance)),
         //Manage User Profile data/state.
         //Allove access to User Profile through widget tree using Provider.
-        ChangeNotifierProvider(create: (context) => UserProfileState(auth: FirebaseAuth.instance)),
+        ChangeNotifierProvider(create: (context) => UserProfileState(auth: FirebaseAuth.instance, firestore: FirebaseFirestore.instance)),
         
       ],
       child: MaterialApp(

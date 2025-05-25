@@ -18,7 +18,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class UserProfileState extends ChangeNotifier{
   final FirebaseAuth auth;
-  UserProfileState({required this.auth});
+  final FirebaseFirestore firestore;
+  UserProfileState({required this.auth, required this.firestore});
   final List<Location> _favouriteLocations = [];
   String? _email;
   final List<Location> _userAdded = [];
@@ -35,7 +36,7 @@ class UserProfileState extends ChangeNotifier{
 
     try {
       //get data from user profile
-      final userDoc = await FirebaseFirestore.instance.collection('users').doc(user.uid).get();
+      final userDoc = await firestore.collection('users').doc(user.uid).get();
       final userData = userDoc.data();
       if(userData==null) return;
       //Read in favourites from user profile
@@ -48,7 +49,7 @@ class UserProfileState extends ChangeNotifier{
       for(var id in favouriteIDs) {
         if(id is String) {
           //For each location in favourites, get the location
-          final doc = await FirebaseFirestore.instance.collection('Locations').doc(id).get();
+          final doc = await firestore.collection('Locations').doc(id).get();
 
           if(doc.exists) {
             final data = doc.data();
@@ -75,7 +76,7 @@ class UserProfileState extends ChangeNotifier{
   }
 
   Future<void> addLocationToUser(String userId, String locationId) async {
-    final userDoc = FirebaseFirestore.instance.collection('users').doc(userId);
+    final userDoc = firestore.collection('users').doc(userId);
     await userDoc.update({
       'userAdded': FieldValue.arrayUnion([locationId])
     });
@@ -86,7 +87,7 @@ class UserProfileState extends ChangeNotifier{
     if (user==null) return;
 
     try {
-      final userDoc = await FirebaseFirestore.instance.collection('users').doc(user.uid).get();
+      final userDoc = await firestore.collection('users').doc(user.uid).get();
       final userData = userDoc.data();
       if(userData==null) return;
       final List<dynamic> userAddedLocs = userData['userAdded'] ?? [];
@@ -94,7 +95,7 @@ class UserProfileState extends ChangeNotifier{
       _userAdded.clear();
 
       for(var id in userAddedLocs) {
-        final doc = await FirebaseFirestore.instance.collection('Locations').doc(id).get();
+        final doc = await firestore.collection('Locations').doc(id).get();
         
         if(id is String) {
           
@@ -125,7 +126,7 @@ class UserProfileState extends ChangeNotifier{
     if(user==null) return;
 
     try {
-      final locationDoc = await FirebaseFirestore.instance.collection('Locations').doc(locationId).get();
+      final locationDoc = await firestore.collection('Locations').doc(locationId).get();
       if(locationDoc.exists){
         final data = locationDoc.data();
         final photoURL = data?['photoURL'] ?? '';
@@ -137,11 +138,11 @@ class UserProfileState extends ChangeNotifier{
             }
           }
       }
-      await FirebaseFirestore.instance.collection('users').doc(user.uid).update({
+      await firestore.collection('users').doc(user.uid).update({
         'userAdded': FieldValue.arrayRemove([locationId])
       });
 
-      await FirebaseFirestore.instance.collection('Locations').doc(locationId).delete();
+      await firestore.collection('Locations').doc(locationId).delete();
 
       _userAdded.removeWhere((loc) => loc.id == locationId);
       notifyListeners();
