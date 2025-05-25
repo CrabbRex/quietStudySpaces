@@ -13,7 +13,7 @@ Here is the App Proposal: [App Propsal](DESIGN/README.md)
 
 ### Limitations:
 Image Storage:
-- Images saved locally.
+- Images are saved locally, as Firebase storage was not usable.
 - Since images are saved locally, Flutter Web does not support Image.file. Therefore, loading images (When clicking on locations) will not work. 
 - Note: This does work on android emulator.
 
@@ -23,7 +23,7 @@ Camera Functionality:
 ### Changes from MVP Proposal:
 #### Change in Device Service Use:
 - Upon receiving feedback (on my App Proposal) and further reflection, the use of **Maps for device capabilities was swapped out for taking photos.**
-- Maps device services was pushed to a stretch goal as outlined in Room for Future Development below.
+- Map device services was pushed to a stretch goal as outlined in Room for Future Development below.
 - The Home Page is mainly affected by this, so instead of the map, the space the map would take up is taken up by Locations. These cards can be clicked and open more information about the location (including a photo).
 
 #### Addition of 'Manage Your Locations':
@@ -53,15 +53,9 @@ Quiet Study Spaces was tested on Chrome Browser and Android Simulator.
 This app uses Both Firebase Authentication (For Auth and Authz) and Firebase Firestore Database. Further information on the implementation can be found in the project documentation.
 
 
-### Testing:
-This App has tests for Authentication - Both Widget tests and unit tests.\\
-Also tests for the Navigation Bar\\
-Uses Mock Auth and Fake Database to load user and data from database for testing functionality.
-
-
 ### Room for future development:
 - Firebase photo uploading.
-- The main next goal is maps integration. Including directions. Includng pop-ups and tags
-- Rating System
-- Improved searching and filtering
-- Improved location - Just near you
+- The main next goal is maps integration. Including directions, map tags and pop-up modals.
+- Rating System.
+- Improved searching and filtering.
+- Improved location - Just near user.
