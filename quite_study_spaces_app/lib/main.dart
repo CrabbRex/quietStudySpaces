@@ -10,7 +10,9 @@ import 'package:quite_study_spaces_app/states/user_profile_state.dart';
 import 'services/firebase_options.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+//Global Firestore instance
 late FirebaseFirestore db;
+
 const Color darkgreen = Color(0xFF153801);
 const Color softGreen = Color(0xFF7FAE39);
 const Color lightGray  = Color(0xFFE5E5E3);
@@ -19,8 +21,7 @@ const Color black = Color(0xFF000000);
 
 
 void main() async {
-  
-
+  //Initialise Firebase
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -31,16 +32,25 @@ void main() async {
   runApp(
     MultiProvider(
       providers: [
+        //Insert Auth Sergice into widget tree using Provider
+        //Allow access to Auth throughout code and
+        //Makes for easier testing.
         Provider<AuthService>(
           create: (_) => AuthService(FirebaseAuth.instance),
         ),
+        //Manage which screen is currently displayed in the app.
         ChangeNotifierProvider(create: (context) => ScreenState()),
+        //Manage Location state.
+        //Allow access to Locations through widget tree using Provider
         ChangeNotifierProvider(create: (context) => Locationstate(FirebaseFirestore.instance)),
+        //Manage User Profile data/state.
+        //Allove access to User Profile through widget tree using Provider.
         ChangeNotifierProvider(create: (context) => UserProfileState(auth: FirebaseAuth.instance)),
         
       ],
       child: MaterialApp(
         title: 'Quiet Study Spaces',
+        //App wide themes:
         theme: ThemeData(
           useMaterial3: false,
           colorScheme: const ColorScheme(
@@ -91,6 +101,7 @@ void main() async {
             ),
             cardColor: offWhite,
         ),
+        //Set initial screen of app.
         home: const CurrentScreen(),
       )
     )

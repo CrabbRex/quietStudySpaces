@@ -1,3 +1,15 @@
+/*
+  signup.dart
+
+  This screen is access via login_screen.dart (and ScreenState).
+
+  This screen allows user to sign up with email and password
+  through Firebase Auth. It will also give verified users Authz to access
+  Firebase Firestore database.
+
+  On Successfil signup, updates screenstate to go to home screen.
+*/
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quite_study_spaces_app/main.dart';

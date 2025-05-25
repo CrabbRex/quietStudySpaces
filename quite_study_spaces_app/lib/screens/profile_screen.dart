@@ -1,3 +1,14 @@
+/*
+  profile_screen.dart
+
+  Accessed via navBar wrapper Listening to screenstate index.
+
+  Displays bare minimum for MVP:
+    - Manage your locations button --> Current logged in user can see
+      and delete the locations that they have added --> Opens 'delete_locations.dart;
+    - Sign Out --> Sign Out using FIrebase Auth --> Sends user to LogIn Screen.
+*/
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -41,38 +52,27 @@ class _ProfileScreenState extends State<ProfileScreen> {
           body: Stack(children: [
             const backgroundWidget(),
             SingleChildScrollView(
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    quietButton(
-                      onPressed: _openDeleteLocations,
-                      label: "Manage Your Locations",
-                    ),
-                    SizedBox(height: 16,),
-                    quietButton(
-                      onPressed: Placeholder.new,
-                      label: "Manage Account",
-                    ),
-                    SizedBox(height: 16,),
-                    quietButton(
-                      onPressed: Placeholder.new,
-                      label: "Change Email",
-                    ),
-                    SizedBox(height: 16,),
-                    quietButton(
-                      onPressed: Placeholder.new,
-                      label: "Delete Account",
-                    ),
-                    SizedBox(height: 16,),
-                    quietButton(
-                      onPressed: () async {
-                        await FirebaseAuth.instance.signOut();
-                        screenState.logOut();
-                      },
-                      label: "Sign Out",
-                    ),
-                  ],
+              child: Container(
+                height: MediaQuery.of(context).size.height,
+                alignment: Alignment.center,
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      quietButton(
+                        onPressed: _openDeleteLocations,
+                        label: "Manage Your Locations",
+                      ),
+                      SizedBox(height: 16,),
+                      quietButton(
+                        onPressed: () async {
+                          await FirebaseAuth.instance.signOut();
+                          screenState.logOut();
+                        },
+                        label: "Sign Out",
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

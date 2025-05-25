@@ -1,3 +1,11 @@
+/*
+  background.dart
+
+  Sets the background vine images.
+
+  Used in all screens in stack to be behind content.
+*/
+
 import 'package:flutter/material.dart';
 
 class backgroundWidget extends StatelessWidget {

@@ -1,3 +1,17 @@
+/*
+  add_locations.dart
+
+  Modal opened via 'home_screen.dart' button.
+
+  Display's user input options.
+
+  Options for user to add photos --> Opens Camera screen via Navigator.push
+    --> Opens to 'camera.dart'
+    --> Stub implementation of photo saving - saves photos locally if taken.
+
+  Saves user's input in Database.
+*/
+
 import 'package:camera/camera.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

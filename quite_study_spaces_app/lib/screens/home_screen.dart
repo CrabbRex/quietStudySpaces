@@ -1,3 +1,16 @@
+/*
+  home_screen.dart
+
+  This widget retrieves Locations from Firebase database.
+  Displays locations as clickable cards.
+
+  If cards are clicked, opens 'show_location.dart'
+
+  Displays 2 more buttons:
+  - Add Locations --> Opens modal 'add_location.dart'
+  - Filter Locations --> Opens modal 'filter_locations.dart'
+*/
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quite_study_spaces_app/main.dart';

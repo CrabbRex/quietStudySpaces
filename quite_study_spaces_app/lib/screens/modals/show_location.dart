@@ -1,3 +1,17 @@
+/*
+  show_location.dart
+
+  Modal opened via 'home_screen.dart' --> Clicking on a location card.
+
+  Displays more information about the location, with the option to add to favourites.
+
+  Add to favourites --> Adds location id to user profile favourites.
+
+  NOTE: Device incompatibility - Flutter Web cannot display image.file
+  This will need to be fixed with File Storage Integration.
+  For now, a stub implementation is used.
+*/
+
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

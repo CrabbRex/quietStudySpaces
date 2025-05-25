@@ -1,3 +1,16 @@
+/*
+  delete_locations.dart
+
+  Loads locations added by current user using 'user_profile_state.dart'
+  Lists these locations with delete button.
+
+  Delete button first deletes and temp photo files.
+  Then deletes location from Locations database collection.
+
+  Note: For photo file storage implementation, further action would
+  be required to delete photos.
+*/
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quite_study_spaces_app/main.dart';

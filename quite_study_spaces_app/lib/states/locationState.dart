@@ -1,8 +1,22 @@
+/*
+  locationState.dart
+
+  Manages locations data and interaction with Database.
+
+  getLocations will return locations based on filters.
+
+  getLocationsFromDB will return all locations from the database.
+
+  Uses ChangeNotifier - Entered in widget tree via main.dart.
+*/
+
 import 'package:flutter/material.dart';
 import 'package:quite_study_spaces_app/models/location_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Locationstate extends ChangeNotifier{
+  //Initialise with Firestore instance
+  //Helpfull for testing.
   final FirebaseFirestore firestore;
   Locationstate([FirebaseFirestore? firestore])
     : firestore = firestore ?? FirebaseFirestore.instance;
@@ -34,8 +48,6 @@ class Locationstate extends ChangeNotifier{
         filtered.add(location);
       }
     }
-    print(filtered);
-    print("FILTERED");
     return filtered;
   }
 

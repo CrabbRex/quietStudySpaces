@@ -1,3 +1,11 @@
+/*
+  camera.dart
+
+  Displays users camera with button to take photo.
+
+  returns XFile via Navigator.pop.
+*/
+
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 

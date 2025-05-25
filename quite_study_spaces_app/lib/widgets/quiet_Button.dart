@@ -1,3 +1,9 @@
+/*
+  quiet_Button.dart
+
+  Custom button used through app for UI.
+*/
+
 import 'package:flutter/material.dart';
 import 'package:quite_study_spaces_app/main.dart';
 

@@ -1,3 +1,16 @@
+/*
+  navBar.dart
+
+  This acts as a wrapper around the main content of the app,
+  adding a navigation bar at the bottom of the 3 main screens.
+
+  Allows for easy navigation through the app.
+
+  It is a listener of 'screen_state.dart'.
+  It displays the correct screen based on the currently selected index
+  from 'screen_state.dart'
+*/
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quite_study_spaces_app/screens/favourites_screen.dart';

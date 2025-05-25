@@ -1,5 +1,16 @@
-import 'dart:io';
+/*
+  user_profile_state.dart
 
+  Manages user profile data and interaction with Database.
+
+  loaduserFavourites sets favourite locations based on current user.
+
+  loadUserAdded sets locations added by current user.
+
+  Uses ChangeNotifier - Entered in widget tree via main.dart.
+*/
+
+import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:quite_study_spaces_app/models/location_model.dart';

@@ -1,3 +1,16 @@
+/*
+  current_screen.dart
+
+  This acts as a central screen controller for the app.
+  Listens to screen_state.dart and displays screens depending on 
+  current screenStatus.
+
+  If screenStatus is 'homeScreen', it loads the navBar widget, which wraps home screen
+  in a navigation bar, allowing switching between homescreen, profile and favourites.
+
+  This code can be easily added to, along with a status in screen_state.dart.
+*/
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quite_study_spaces_app/screens/login_screen.dart';

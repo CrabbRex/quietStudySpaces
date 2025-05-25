@@ -1,3 +1,10 @@
+/*
+  screens_state.dart
+
+  ChangeNotifier that manages app's current screen state.
+  Simple methods to change screen via _status variable, in conjunction
+  with listener 'current_screen.dart'
+*/
 
 import 'package:flutter/material.dart';
 

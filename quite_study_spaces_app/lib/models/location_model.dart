@@ -1,3 +1,9 @@
+/*
+  location_model.dart
+
+  Data model for locations as saved in databse.
+*/
+
 class Location{
   final String id;
   final String name;

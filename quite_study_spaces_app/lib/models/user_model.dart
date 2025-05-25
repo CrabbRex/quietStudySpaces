@@ -1,3 +1,9 @@
+/*
+  user_model.dart
+
+  Data model for user profile as saved in databse.
+*/
+
 class User{
   final String uid;
   final String email;

@@ -1,3 +1,12 @@
+/*
+  favourites_screen.dart
+
+  Accessed via navBar wrapper Listening to screenstate index.
+
+  This widget retrieves a user's favourite locations via 'user_profile_state.dart'.
+  Displays those favourites in a list.
+*/
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quite_study_spaces_app/states/user_profile_state.dart';

@@ -1,3 +1,13 @@
+/*
+  filter_locations.dart
+
+  Modal opened via 'home_screen.dart' button.
+
+  Display's user filter options.
+
+  Changes locations displayed on home screen via 'locationState.dart'.
+*/
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quite_study_spaces_app/states/locationState.dart';
