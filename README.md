@@ -52,13 +52,6 @@ Quiet Study Spaces was tested on Chrome Browser and Android Simulator.
 ### Integration with Firebase:
 This app uses Both Firebase Authentication (For Auth and Authz) and Firebase Firestore Database. Further information on the implementation can be found in the project documentation.
 
-
-### Testing:
-This App has tests for Authentication - Both Widget tests and unit tests.\\
-Also tests for the Navigation Bar\\
-Uses Mock Auth and Fake Database to load user and data from database for testing functionality.
-
-
 ### Room for future development:
 - Firebase photo uploading.
 - The main next goal is maps integration. Including directions. Includng pop-ups and tags
