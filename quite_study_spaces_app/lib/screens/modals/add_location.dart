@@ -23,7 +23,7 @@ class _NewLocationState extends State<NewLocation> {
   final locDescController = TextEditingController();
   bool isFirstChecked = false;
   bool isSecondChecked = false;
-  String? _capturedImagePath;
+  XFile? _capturedImageFile;
   bool _photoTaken = false;
 
   Future<bool> _requestCameraPermission() async {
@@ -59,7 +59,7 @@ class _NewLocationState extends State<NewLocation> {
       "Address" : locAddressController.text,
       "description" : locDescController.text,
       "filterTags" : tags,
-      "photoURL" : _capturedImagePath ?? "",
+      "photoURL" : _capturedImageFile?.path ?? "",
     };
 
     try{
@@ -145,7 +145,7 @@ class _NewLocationState extends State<NewLocation> {
                             final cameras = await availableCameras();
                             //Use Navigator.push to open camera
                             //Image returned goes into imageFile var
-                            final imagePath = await Navigator.push(//Nav Push pushes this screen onto the navigation stack.
+                            final capturedImage = await Navigator.push(//Nav Push pushes this screen onto the navigation stack.
                               context,
                               MaterialPageRoute(
                                 //A modal route that replaces the entire screen
@@ -154,9 +154,9 @@ class _NewLocationState extends State<NewLocation> {
                             );
 
                             //Stub implementation:
-                            if (imagePath != null) {
+                            if (capturedImage != null && capturedImage is XFile) {
                               setState(() {
-                                _capturedImagePath = imagePath;
+                                _capturedImageFile = capturedImage;
                                 _photoTaken = true;
                               });
                             }

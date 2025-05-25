@@ -34,7 +34,7 @@ class _TakePhotoScreenState extends State<TakePhotoScreen> {
     try {
       await _initialiseControllerFuture;
       final image = await _controller.takePicture();
-      Navigator.pop(context, image.path);
+      Navigator.pop(context, image);
     } catch (e) {
       print(e);
     }
