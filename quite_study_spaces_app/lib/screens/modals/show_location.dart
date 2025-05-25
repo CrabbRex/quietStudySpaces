@@ -10,6 +10,8 @@
   NOTE: Device incompatibility - Flutter Web cannot display image.file
   This will need to be fixed with File Storage Integration.
   For now, a stub implementation is used.
+
+  Due to this, error is caught to stop crashing.
 */
 
 import 'dart:io';
@@ -58,6 +60,20 @@ class _ShowLocationState extends State<ShowLocation> {
     }
   }
 
+  Widget buildImageWidget(String photoURL) {
+    try{
+      final file = File(photoURL);
+      return Image.file(
+        file,
+        fit: BoxFit.cover,
+        errorBuilder: (context, error, StackTrace) =>
+          Center(child: Text("Image failed to load.")),
+      );
+    } catch (r) {
+      return Center(child: Text("Image not supported on this platform"),);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -78,10 +94,7 @@ class _ShowLocationState extends State<ShowLocation> {
             height: 150,
             width: double.infinity,
             child: widget.location.photoURL.isNotEmpty
-              ? Image.file(
-                File(widget.location.photoURL),
-                fit: BoxFit.cover,
-                )
+              ? buildImageWidget(widget.location.photoURL)
               : Center(child: Text("No Image")),
           ),
           SizedBox(height: 8),
