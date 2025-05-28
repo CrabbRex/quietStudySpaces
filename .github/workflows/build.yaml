@@ -21,7 +21,7 @@ concurrency:
 defaults:
   run:
     shell: bash
-    working-directory: quiet_study_spaces_app
+    working-directory: quite_study_spaces_app
 
 
 jobs:
