@@ -81,4 +81,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: latest-apk-build
-          path: build/app/outputs/flutter-apk/*.apk
+          path: quite_study_spaces_app/build/app/outputs/flutter-apk/*.apk
